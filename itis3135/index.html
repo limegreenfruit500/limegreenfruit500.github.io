@@ -3,10 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Jacob Bell | Course Page</title>
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: #111;
+            color: #b6ffd7;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        main {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: #181818;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,255,170,0.08);
+            padding: 2.5rem 2rem;
+        }
+        h1, h2 {
+            color: #2fffa3;
+            /* Removed text-shadow */
+        }
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .links-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            justify-content: center;
+        }
+        .links-list li {
+            background: #222;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            transition: background 0.2s;
+        }
+        .links-list li:hover {
+            background: #2fffa320;
+        }
+        .links-list a {
+            color: #b6ffd7;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .links-list a:hover {
+            color: #2fffa3;
+            text-decoration: underline;
+        }
+        .label {
+            color: #2fffa3;
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        @media (max-width: 700px) {
+            main {
+                margin: 1rem;
+                padding: 1.2rem 0.5rem;
+            }
+            .links-list {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Welcome to my course page!</p>
+    <main>
+        <h1>Welcome to my course page!</h1>
+        <section>
+            <h2>Find Me Online</h2>
+            <ul class="links-list">
+                <li>
+                    <span class="label">Webspace</span>
+                    <a href="https://webpages.charlotte.edu/jbell92" target="_blank" rel="noopener">webpages.charlotte.edu/jbell92</a>
+                </li>
+                <li>
+                    <span class="label">GitHub</span>
+                    <a href="https://github.com/limegreenfruit500" target="_blank" rel="noopener">github.com/limegreenfruit500</a>
+                </li>
+                <li>
+                    <span class="label">GitHub pages</span>
+                    <a href="https://limegreenfruit500.github.io/" target="_blank" rel="noopener">limegreenfruit500.github.io</a>
+                </li>
+                <li>
+                    <span class="label">GitHub Course Page</span>
+                    <a href="https://github.com/limegreenfruit500/limegreenfruit500.github.io/tree/main/itis3135" target="_blank" rel="noopener">itis3135</a>
+                </li>
+                <li>
+                    <span class="label">freeCodeCamp</span>
+                    <a href="https://www.freecodecamp.org/jbell92" target="_blank" rel="noopener">freecodecamp.org/jbell92</a>
+                </li>
+                <li>
+                    <span class="label">Codecademy</span>
+                    <a href="https://www.codecademy.com/profiles/JollyBaboon92" target="_blank" rel="noopener">codecademy.com/JollyBaboon92</a>
+                </li>
+                <li>
+                    <span class="label">LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/bell-m-jacob/" target="_blank" rel="noopener">linkedin.com/in/bell-m-jacob</a>
+                </li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
