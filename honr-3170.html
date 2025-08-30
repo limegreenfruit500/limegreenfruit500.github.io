@@ -1,0 +1,76 @@
+<!-- Instagram Feed Style -->
+<div class="insta-feed" style="max-width: 500px; margin: 40px auto; font-family: 'Segoe UI', Arial, sans-serif; background: #fff; border: 1px solid #dbdbdb; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+    <!-- Header -->
+    <div class="insta-header" style="display: flex; align-items: center; padding: 16px;">
+        <img src="your-photo.jpg" alt="Your Photo" style="width:48px; height:48px; border-radius:50%; object-fit:cover; margin-right:12px;">
+        <div>
+            <strong style="font-size: 1.1em;">jacob</strong><br>
+            <span style="color: #888; font-size: 0.95em;">About Me: Sharing honest advice and experiences about college life.</span>
+        </div>
+    </div>
+    <!-- Post Image Placeholder -->
+    <div style="width:100%; height:320px; background:#eee; display:flex; align-items:center; justify-content:center; font-size:1.2em; color:#bbb;">
+        <span>Post Image</span>
+    </div>
+    <!-- Post Content -->
+    <div class="insta-post-content" style="padding: 16px;">
+        <div style="color:#888; font-size:0.95em; margin-bottom:4px;">June 10, 2024</div>
+        <div style="font-weight:600; margin-bottom:8px;">Lifestyle Post 1</div>
+        <div style="margin-bottom:12px;">
+            <strong>How do you meet the right people at your college?</strong>
+        </div>
+        <div style="font-size:1em; color:#222; margin-bottom:12px;"></div>
+            For many people, your first semester of college is an overwhelming fresh start in life at the very beginning of your adult life. You may be away from the friend group you stuck with through high school, and you are now looking for a new social circle. Social media could be your friend when it comes to keeping in touch with the people away from you now, but more than ever it is crucial to play things safe in a new environment away from home. For some women, you may not have even moved in, and after that change within your bio or a post saying where you are enrolling, it isn't uncommon to have a handful of people you have no prior contact with starting to follow you. It could be fine, but it is not uncommon for women to receive unsolicited messages from upperclassmen, specifically from men. Reaching out to your roommates in the summer before you all arrive to discuss who could be bringing what for a suite, or in a traditional style dorm, figuring out how your belongings can coexist in the same space, or just befriending your roommates, is recommended by myself. However, I have yet to hear a good thing about an upperclassman following incoming freshman women on his Instagram. Your interactions starting over text make it much easier for a possible predator to play a character from behind the screen. If you are able to go and make friends with someone you know you can trust, branching out is a much safer scenario considering the things that come with young adults being left unsupervised after a tame three month stretch in the summer.
+        </div>
+        <div style="font-size:1em; color:#222;">
+            Finding yourself is important in college, but so is finding the right people!!! It might not happen the first try, but as long as you can make good decisions, and set boundaries with the new people in your lives, the other things can seemingly just fall into place. Those who flunk out of college aren't convicted by the jump in course material, but rather with how they deal with their newfound freedom. Be safe wherever you are!!!
+        </div>
+    </div>
+    <!-- Like/Comment Bar -->
+    <div style="padding: 0 16px 8px 16px; display: flex; align-items: center; gap: 24px;">
+        <button id="like-btn" style="background:none; border:none; cursor:pointer; font-size:1.3em;">&#9829;</button>
+        <span id="like-count" style="font-size:1em;">0 likes</span>
+        <span style="font-size:1em; color:#888;">&#128172; Comments</span>
+    </div>
+    <!-- Replies (Comments) -->
+    <div class="insta-comments" style="padding: 0 16px 16px 16px;">
+        <div id="reply-list"></div>
+        <form id="reply-form" style="margin-top: 12px;">
+            <textarea id="reply-input" name="reply" rows="2" cols="40" required style="width:100%; border-radius:8px; border:1px solid #dbdbdb; padding:8px; resize:none;" placeholder="Add a comment..."></textarea><br>
+            <button type="submit" style="margin-top:8px; background:#3897f0; color:#fff; border:none; border-radius:6px; padding:6px 16px; cursor:pointer;">Post</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Like button functionality
+    let likeCount = parseInt(localStorage.getItem('likeCount') || '0');
+    document.getElementById('like-count').textContent = likeCount + (likeCount === 1 ? ' like' : ' likes');
+    document.getElementById('like-btn').addEventListener('click', function() {
+        likeCount++;
+        localStorage.setItem('likeCount', likeCount);
+        document.getElementById('like-count').textContent = likeCount + (likeCount === 1 ? ' like' : ' likes');
+    });
+
+    // Replies (comments)
+    document.getElementById('reply-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const input = document.getElementById('reply-input');
+        const reply = input.value.trim();
+        if (reply) {
+            let replies = JSON.parse(localStorage.getItem('replies') || '[]');
+            replies.push(reply);
+            localStorage.setItem('replies', JSON.stringify(replies));
+            input.value = '';
+            renderReplies();
+        }
+    });
+
+    function renderReplies() {
+        const replyList = document.getElementById('reply-list');
+        let replies = JSON.parse(localStorage.getItem('replies') || '[]');
+        replyList.innerHTML = replies.map(r => `<div class="reply" style="padding:6px 0; border-bottom:1px solid #eee; font-size:0.98em;"><strong>user</strong> ${r}</div>`).join('');
+    }
+
+    renderReplies();
+</script>
