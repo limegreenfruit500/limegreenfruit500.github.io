@@ -1,18 +1,16 @@
 <!-- Instagram Feed Style - Desktop Optimized -->
 <div class="insta-feed" style="max-width: 900px; margin: 40px auto; font-family: 'Segoe UI', Arial, sans-serif; background: #fff; border: 1px solid #dbdbdb; border-radius: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex; flex-direction: row; gap: 0;">
-    <!-- Left: Carousel for Images/Videos -->
-    <div style="flex: 0 0 420px; min-width: 420px; max-width: 420px; height: 100%; background:#fafafa; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; border-top-left-radius:18px; border-bottom-left-radius:18px;">
-        <button id="prev-media" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.85); border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:1.4em; box-shadow:0 2px 6px rgba(0,0,0,0.08);">&#8592;</button>
-        <div id="media-carousel" style="width:90%; height:340px; display:flex; align-items:center; justify-content:center;">
+    <!-- Left: Media Column -->
+    <div style="flex: 0 0 420px; min-width: 420px; max-width: 420px; height: 100%; background:#fafafa; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; position:relative; overflow:auto; border-top-left-radius:18px; border-bottom-left-radius:18px; padding: 24px 0;">
+        <div id="media-column" style="width:90%; display:flex; flex-direction:column; gap:18px;">
             <!-- Media will be injected here -->
         </div>
-        <button id="next-media" style="position:absolute; right:16px; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.85); border:none; border-radius:50%; width:36px; height:36px; cursor:pointer; font-size:1.4em; box-shadow:0 2px 6px rgba(0,0,0,0.08);">&#8594;</button>
     </div>
     <!-- Right: Post Content and Comments -->
     <div style="flex: 1 1 0; min-width: 0; padding: 0;">
         <!-- Header -->
         <div class="insta-header" style="display: flex; align-items: center; padding: 20px 24px 0 24px; border-bottom:1px solid #eee;">
-            <img src="your-photo.jpg" alt="Your Photo" style="width:56px; height:56px; border-radius:50%; object-fit:cover; margin-right:16px;">
+            <img src="IMG_2268.jpg" alt="Your Photo" style="width:56px; height:56px; border-radius:50%; object-fit:cover; margin-right:16px;">
             <div>
                 <strong style="font-size: 1.15em;">jacob</strong><br>
                 <span style="color: #888; font-size: 1em;">About Me: Sharing honest advice and experiences about college life.</span>
@@ -53,35 +51,26 @@
 </div>
 
 <script>
-    // Carousel media (images/videos)
+    // Media items (images/videos)
     const mediaItems = [
-        { type: 'img', src: 'post-image1.jpg', alt: 'Image 1' },
+        { type: 'img', src: 'image.png', alt: 'Image 1' },
         { type: 'img', src: 'post-image2.jpg', alt: 'Image 2' },
         { type: 'video', src: 'post-video1.mp4', alt: 'Video 1' }
     ];
-    let currentMedia = 0;
 
-    function showMedia(index) {
-        const carousel = document.getElementById('media-carousel');
-        const item = mediaItems[index];
-        let html = '';
-        if (item.type === 'img') {
-            html = `<img src="${item.src}" alt="${item.alt}" style="max-width:100%; max-height:100%; border-radius:14px;">`;
-        } else if (item.type === 'video') {
-            html = `<video src="${item.src}" controls style="max-width:100%; max-height:100%; border-radius:14px;"></video>`;
-        }
-        carousel.innerHTML = html;
+    // Render all media vertically
+    function renderMediaColumn() {
+        const container = document.getElementById('media-column');
+        container.innerHTML = mediaItems.map(item => {
+            if (item.type === 'img') {
+                return `<img src="${item.src}" alt="${item.alt}" style="max-width:100%; max-height:340px; border-radius:14px;">`;
+            } else if (item.type === 'video') {
+                return `<video src="${item.src}" controls style="max-width:100%; max-height:340px; border-radius:14px;"></video>`;
+            }
+            return '';
+        }).join('');
     }
-
-    document.getElementById('prev-media').onclick = function() {
-        currentMedia = (currentMedia - 1 + mediaItems.length) % mediaItems.length;
-        showMedia(currentMedia);
-    };
-    document.getElementById('next-media').onclick = function() {
-        currentMedia = (currentMedia + 1) % mediaItems.length;
-        showMedia(currentMedia);
-    };
-    showMedia(currentMedia);
+    renderMediaColumn();
 
     // Like button functionality
     let likeCount = parseInt(localStorage.getItem('likeCount') || '0');
