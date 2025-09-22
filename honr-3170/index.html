@@ -275,6 +275,42 @@
         </article>
     </div>
     <script>
+
+        const post4 = document.createElement('article');
+        post4.id = 'post4';
+        post4.innerHTML = `
+            <div class="post-header" style="align-items: flex-start;">
+            <img src="IMG_2268.jpg" alt="Jacob's Photo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:12px;border:1px solid #dbdbdb;">
+            <div style="display: flex; flex-direction: column;">
+                <div class="post-title" style="margin-bottom: 6px;">College Connections: Not just your friends!</div>
+                <div class="date" style="align-self: flex-end; margin-top: 8px;">September 21, 2025</div>
+            </div>
+            </div>
+            <div class="post-media">
+                <img src="connections.png" alt="College Connections">
+            </div>
+            <details open>
+            <summary>Why college connections matter beyond friendships</summary>
+            <div>
+                One of the best things you can do for yourself getting onto college campus is to get active in clubs and groups within your respective major or even within your interests. Your resume can only get you so much in the age of AI inflating job requirements to land an interview. In college now, you need to make connections with employers, alumni, and professors to secure your future in and out of college. A given necessity is heading to your local career fairs to scout out your potential future employers, but I also advise you to look into your college’s learning communities and honors programs! Not only will you be surrounded by like minded students, but there is also a chance you have some more immediate benefits to joining these experiences such as guaranteed housing and priority registration for classes, and there will be more exclusive opportunities to talk to alumni of the communities for networking opportunities! If those short term benefits don’t interest you right now, I will advise you to trust me and start working for the long term benefits as soon as possible!!! You can almost everyone your resume, but not everyone may give you the time of day if you can’t relate to them in one way or another.
+            </div>
+            </details>
+            <div class="like-bar">
+            <button id="like-btn-4">&#9829;</button>
+            <span id="like-count-4">0 likes</span>
+            </div>
+        `;
+        document.querySelector('.container').appendChild(post4);
+
+        // Like button functionality (fourth post)
+        let likeCount4 = parseInt(localStorage.getItem('likeCount4') || '0');
+        document.getElementById('like-count-4').textContent = likeCount4 + (likeCount4 === 1 ? ' like' : ' likes');
+        document.getElementById('like-btn-4').addEventListener('click', function() {
+            likeCount4++;
+            localStorage.setItem('likeCount4', likeCount4);
+            document.getElementById('like-count-4').textContent = likeCount4 + (likeCount4 === 1 ? ' like' : ' likes');
+        });
+
         // Like button functionality (first post)
         let likeCount = parseInt(localStorage.getItem('likeCount') || '0');
         document.getElementById('like-count').textContent = likeCount + (likeCount === 1 ? ' like' : ' likes');
