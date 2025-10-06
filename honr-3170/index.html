@@ -301,7 +301,42 @@
             </div>
         `;
         document.querySelector('.container').appendChild(post4);
+        
+    // POST 5
+    const post5 = document.createElement('article');
+    post5.id = 'post5';
+    post5.innerHTML = `
+        <div class="post-header" style="align-items: flex-start;">
+        <img src="IMG_2268.jpg" alt="Jacob's Photo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:12px;border:1px solid #dbdbdb;">
+        <div style="display: flex; flex-direction: column;">
+            <div class="post-title" style="margin-bottom: 6px;">Short Form Sideeffects: A New Drug for College Students.</div>
+            <div class="date" style="align-self: flex-end; margin-top: 8px;">September 28, 2025</div>
+        </div>
+        </div>
+        <div class="post-media">
+        <img src="graph.png" alt="Short Form Content Graph">
+        </div>
+        <details open>
+        <summary>How short form content affects college students</summary>
+        <div>
+            Before you were sent off to college, many of us got the same advice from our parents or guardians. They urge us to make good choices and also probably mention something about the danger of freedom and the role access to substances has on us, but your phone can affect you long term more than that of a bad hangover. It’s ironic to come from myself preaching the dangers of social media, and more specifically what I am about to say about short form content consumption as someone writing a short form blog post, but seriously, it can rewire your brain in more ways than you imagine. Some people need short form content to get that constant dopamine release that turns to addiction, but beyond the necessity for the dopamine, it is doing you no favors in the classroom either. Your attention span can easily be shot down by high volume consumption of short form content. You may not be able to cut it out of your life entirely, as there are even social connections that enable short form media to hold your attention, such as whenever your friend asks you, “hey, did you see that reel I sent you?” It could be a five second steal, but your friend may have sent you something they think might interest you, whether it’s a video genre or someone’s dedicated account, you are now in a rabbit hole! But I urge you, when you know you have a heavy academic load in the next coming week, put a can on short form content. Prepare your attention span, and block it out. My experience with productivity seems to be the most efficient when I am in what feels like a rhythm. Bouncing around from topic to topic is hard to accomplish for homework, and at the end of the year, chances are you have a test, presentation, or paper to write that requires absolute attention. Prepare yourself! It isn’t just booze anymore!
+        </div>
+        </details>
+        <div class="like-bar">
+        <button id="like-btn-5">&#9829;</button>
+        <span id="like-count-5">0 likes</span>
+        </div>
+    `;
+    document.querySelector('.container').appendChild(post5);
 
+    // Like button functionality (fifth post)
+    let likeCount5 = parseInt(localStorage.getItem('likeCount5') || '0');
+    document.getElementById('like-count-5').textContent = likeCount5 + (likeCount5 === 1 ? ' like' : ' likes');
+    document.getElementById('like-btn-5').addEventListener('click', function() {
+        likeCount5++;
+        localStorage.setItem('likeCount5', likeCount5);
+        document.getElementById('like-count-5').textContent = likeCount5 + (likeCount5 === 1 ? ' like' : ' likes');
+    });
         // Like button functionality (fourth post)
         let likeCount4 = parseInt(localStorage.getItem('likeCount4') || '0');
         document.getElementById('like-count-4').textContent = likeCount4 + (likeCount4 === 1 ? ' like' : ' likes');
