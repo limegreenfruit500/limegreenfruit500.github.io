@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Shiny Hunting — Hobby</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shiny Hunting — Hobby</title>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
     <!-- Embedded stylesheet (required) -->
     <style>
         /* Basic reset & CRAP-friendly layout */
@@ -59,7 +59,7 @@
             flex:1;
         }
 
-        nav[role="navigation"]{
+        nav[aria-label="Section navigation"]{
             display:flex;
             gap:var(--nav-gap);
             align-items:center;
@@ -172,32 +172,18 @@
         }
     </style>
 
-    <div class="container" role="application" aria-labelledby="site-title">
-        <!-- header (inlined per assignment) -->
+    <div class="container" role="application" aria-label="Shiny hunting hobby page">
+        <!-- header (inlined with 7 linked buttons) -->
         <header>
-            <h1 id="site-title" tabindex="0">Shiny Hunting — Hobby</h1>
-
-            <nav role="navigation" aria-label="Primary section navigation">
-                <!-- nav buttons — JS expects elements with class "nav-link" and data-target -->
-                <button class="nav-link active" data-target="what" type="button" aria-pressed="true" aria-controls="what">What</button>
-                <span class="divider" aria-hidden="true" style="opacity:0.6;margin:0 0.4rem">🍃</span>
-
-                <button class="nav-link" data-target="who" type="button" aria-pressed="false" aria-controls="who">Who</button>
-                <span class="divider" aria-hidden="true" style="opacity:0.6;margin:0 0.4rem">🍃</span>
-
-                <button class="nav-link" data-target="when" type="button" aria-pressed="false" aria-controls="when">When</button>
-                <span class="divider" aria-hidden="true" style="opacity:0.6;margin:0 0.4rem">🍃</span>
-
-                <button class="nav-link" data-target="where" type="button" aria-pressed="false" aria-controls="where">Where</button>
-                <span class="divider" aria-hidden="true" style="opacity:0.6;margin:0 0.4rem">🍃</span>
-
-                <button class="nav-link" data-target="how" type="button" aria-pressed="false" aria-controls="how">How</button>
-                <span class="divider" aria-hidden="true" style="opacity:0.6;margin:0 0.4rem">🍃</span>
-
-                <button class="nav-link" data-target="why" type="button" aria-pressed="false" aria-controls="why">Why</button>
-                <span class="divider" aria-hidden="true" style="opacity:0.6;margin:0 0.4rem">🍃</span>
-
-                <button class="nav-link" data-target="ai" type="button" aria-pressed="false" aria-controls="ai">AI Prompts</button>
+            <h1>Shiny Hunting — Hobby</h1>
+            <nav aria-label="Section navigation">
+                <button class="nav-link" type="button" data-target="what" aria-pressed="false">What</button>
+                <button class="nav-link" type="button" data-target="who" aria-pressed="false">Who</button>
+                <button class="nav-link" type="button" data-target="when" aria-pressed="false">When</button>
+                <button class="nav-link" type="button" data-target="where" aria-pressed="false">Where</button>
+                <button class="nav-link" type="button" data-target="how" aria-pressed="false">How</button>
+                <button class="nav-link" type="button" data-target="why" aria-pressed="false">Why</button>
+                <button class="nav-link" type="button" data-target="ai" aria-pressed="false">AI Prompts</button>
             </nav>
         </header>
 
@@ -231,7 +217,7 @@
                     }
                 </style>
 
-                <figure class="panel" role="region" aria-label="Gallery of shiny catches" aria-labelledby="what-figcap">
+                <figure class="panel" aria-label="Gallery of shiny catches">
                     <!-- Responsive gallery: one larger feature image + two supporting images -->
                     <div class="catch-gallery">
                         <a class="catch-feature crop feature-aspect" href="catch1.jpg" target="_blank" rel="noopener">
@@ -261,10 +247,10 @@
                         </div>
                     </div>
 
-                    <figcaption id="what-figcap">Featured catches — photos by the page author</figcaption>
                     <p class="img-note">
                         Photos: catch1.jpg, catch2.jpg, catch3.jpg — original photography (and captures) by myself.
                     </p>
+                    <figcaption id="what-figcap">Featured catches — photos by myself</figcaption>
                 </figure>
 
                 <div class="panel" aria-hidden="false">
@@ -384,9 +370,9 @@
                         <text x="78" y="60" font-size="12" fill="#021014" font-weight="700">Hunter</text>
                     </svg>
                     <div>
-                        <figcaption id="who-figcap">Shiny hunter profile</figcaption>
-                        <p class="img-note">Image: original SVG illustration created by the page author (cartoon style) — no AI used.</p>
+                        <p class="img-note"></p>
                     </div>
+                    <figcaption id="who-figcap">Shiny hunter profile</figcaption>
                 </figure>
 
                 <div class="panel">
@@ -426,9 +412,9 @@
                         <text x="22" y="70" font-size="10" fill="#021014">Timed events and raids boost odds</text>
                     </svg>
                     <div>
-                        <figcaption id="when-figcap">Event calendar snapshot</figcaption>
-                        <p class="img-note">Image: original SVG illustration created by the page author (cartoon style) — no AI used.</p>
+                        <p class="img-note"></p>
                     </div>
+                    <figcaption id="when-figcap">Event calendar snapshot</figcaption>
                 </figure>
 
                 <div class="panel">
@@ -459,9 +445,9 @@
                         <text x="26" y="70" font-size="14" fill="#021014" font-weight="800">Switch / GO / Mobile</text>
                     </svg>
                     <div>
-                        <figcaption id="where-figcap">Common platforms for hunts</figcaption>
-                        <p class="img-note">Image: original SVG illustration created by the page author (cartoon style) — no AI used.</p>
+                        <p class="img-note"></p>
                     </div>
+                    <figcaption id="where-figcap">Common platforms for hunts</figcaption>
                 </figure>
 
                 <div class="panel">
@@ -490,9 +476,9 @@
                         <text x="24" y="60" font-size="11" fill="#021014" font-weight="700">Methods</text>
                     </svg>
                     <div>
-                        <figcaption id="how-figcap">Breeding, chaining & raids</figcaption>
-                        <p class="img-note">Image: original SVG illustration created by the page author (cartoon style) — no AI used.</p>
+                        <p class="img-note"></p>
                     </div>
+                    <figcaption id="how-figcap">Breeding, chaining & raids</figcaption>
                 </figure>
 
                 <!-- simple JS slideshow -->
@@ -512,6 +498,7 @@
                             <div><strong>Tip 3:</strong> Participate in raids, community days, and events — often the fastest way to find shinies en masse.</div>
                         </div>
                     </div>
+
                     <div style="margin-top:0.6rem">
                         <button class="cta" type="button" id="prevSlide">Prev</button>
                         <button class="cta" type="button" id="nextSlide">Next</button>
@@ -534,9 +521,9 @@
                         <text x="110" y="78" font-size="12" fill="#0ea5a4">Discovery</text>
                     </svg>
                     <div>
-                        <figcaption id="why-figcap">The joy of rare discovery</figcaption>
-                        <p class="img-note">Image: original SVG illustration created by the page author (cartoon style) — no AI used.</p>
+                        <p class="img-note"></p>
                     </div>
+                    <figcaption id="why-figcap">The joy of rare discovery</figcaption>
                 </figure>
 
                 <div class="panel">
@@ -547,14 +534,11 @@
                 </div>
             </section>
 
-            <!-- AI Prompts -->
             <section id="ai" class="page" aria-labelledby="ai-title">
                 <h2 id="ai-title">AI Prompts / Notes</h2>
 
                 <div class="panel">
-                    <p>I did not use AI to generate the HTML, CSS, or JavaScript in this page. All SVG images are original illustrations created by the page author. No external AI models were used to produce code or text content.</p>
-
-                    <p>If you used AI for images only, include a comment in your submission: "I only used AI for images." This page did not use AI for images either.</p>
+                    <p>I did not use AI to generate the images on this page in any way. All SVG images are original illustrations created by myself. GitHub CoPilot was utilized throughout the code to sharpen UI implementation and color scheme.</p>
                 </div>
 
                 <div class="panel">
@@ -568,37 +552,41 @@
             </section>
         </main>
 
-        <!-- footer (inlined per assignment) -->
         <footer>
-            <div>
-                <p class="design">designed by <a href="https://example.com" target="_blank" rel="noopener">Lime Green Studio</a></p>
+            <div class="validators" aria-hidden="false">
+                <a href="https://validator.w3.org/" target="_blank" rel="noopener">Validate HTML</a>
+                <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">Validate CSS</a>
             </div>
-
-            <div class="validators" aria-label="Validation links">
-                <a href="https://validator.w3.org/nu/?doc=https://webpages.charlotte.edu/UNCCID/itis3135/hobby/index.html" target="_blank" rel="noopener">HTML Validator</a>
-                <a href="https://jigsaw.w3.org/css-validator/validator?uri=https://webpages.charlotte.edu/UNCCID/itis3135/hobby/index.html" target="_blank" rel="noopener">CSS Validator</a>
-                <a href="https://wave.webaim.org/report#/" target="_blank" rel="noopener">Accessibility Check</a>
-            </div>
+            <div class="design">Design & content — <a href="https://webpages.charlotte.edu/jbell92/itis3135/jbell_designs/" aria-label="Author profile link">JBell Designs</a></div>
+        </footer>
         </footer>
     </div>
+    <!-- Include HTML include helper so header/footer components are pulled in -->
+    <script src="scripts/HTMLInclude.min.js"></script>
 
-    <!-- JavaScript to switch sections and operate slideshow (unchanged) -->
+    <!-- JavaScript to switch sections and operate slideshow (converted to regular functions for broader linter compatibility) -->
     <script>
         // Navigation: show only the selected section
         (function(){
-            const navButtons = document.querySelectorAll('.nav-link');
-            const pages = document.querySelectorAll('.page');
+            var navButtons = document.querySelectorAll('.nav-link');
+            var pages = document.querySelectorAll('.page');
 
             function showPage(id){
-                pages.forEach(p => p.id === id ? p.classList.add('active') : p.classList.remove('active'));
-                navButtons.forEach(b => {
-                    const is = b.dataset.target === id;
-                    b.classList.toggle('active', is);
-                    b.setAttribute('aria-pressed', is ? 'true' : 'false');
+                Array.prototype.forEach.call(pages, function(p){
+                    if (p.id === id){
+                        p.classList.add('active');
+                    } else {
+                        p.classList.remove('active');
+                    }
+                });
+                Array.prototype.forEach.call(navButtons, function(b){
+                    var isActive = b.dataset.target === id;
+                    b.classList.toggle('active', isActive);
+                    b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
                 });
                 // move focus to the section heading for accessibility
-                const heading = document.querySelector('#' + id + ' h2');
-                if(heading){
+                var heading = document.querySelector('#' + id + ' h2');
+                if (heading){
                     heading.setAttribute('tabindex','-1');
                     heading.focus();
                 }
@@ -606,9 +594,9 @@
                 window.scrollTo(0,0);
             }
 
-            navButtons.forEach(btn=>{
-                btn.addEventListener('click', e=>{
-                    const target = btn.getAttribute('data-target');
+            Array.prototype.forEach.call(navButtons, function(btn){
+                btn.addEventListener('click', function(e){
+                    var target = btn.getAttribute('data-target');
                     showPage(target);
                     // Update URL hash (optional)
                     history.replaceState(null, '', '#'+target);
@@ -616,22 +604,44 @@
             });
 
             // Load page from hash if present
-            const initial = location.hash ? location.hash.substring(1) : 'what';
+            var initial = location.hash ? location.hash.substring(1) : 'what';
             showPage(initial);
         })();
 
         // Simple slideshow for the How section
         (function(){
-            const slides = document.querySelectorAll('#slideshow .slide');
-            if(!slides.length) return;
-            let idx = 0;
-            const show = i=>{
-                slides.forEach(s => s.classList.toggle('visible', +s.dataset.index === i));
-            };
-            document.getElementById('prevSlide').addEventListener('click', ()=>{ idx = (idx - 1 + slides.length) % slides.length; show(idx); });
-            document.getElementById('nextSlide').addEventListener('click', ()=>{ idx = (idx + 1) % slides.length; show(idx); });
+            var slides = document.querySelectorAll('#slideshow .slide');
+            if (!slides.length) return;
+            var idx = 0;
+            function show(i){
+                Array.prototype.forEach.call(slides, function(s){
+                    var sIndex = +s.dataset.index;
+                    if (sIndex === i){
+                        s.classList.add('visible');
+                    } else {
+                        s.classList.remove('visible');
+                    }
+                });
+            }
+            var prev = document.getElementById('prevSlide');
+            var next = document.getElementById('nextSlide');
+            if (prev){
+                prev.addEventListener('click', function(){
+                    idx = (idx - 1 + slides.length) % slides.length;
+                    show(idx);
+                });
+            }
+            if (next){
+                next.addEventListener('click', function(){
+                    idx = (idx + 1) % slides.length;
+                    show(idx);
+                });
+            }
             // auto-rotate every 6s
-            setInterval(()=>{ idx = (idx + 1) % slides.length; show(idx); }, 6000);
+            setInterval(function(){
+                idx = (idx + 1) % slides.length;
+                show(idx);
+            }, 6000);
         })();
     </script>
 
