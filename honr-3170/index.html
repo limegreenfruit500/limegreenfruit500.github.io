@@ -255,7 +255,7 @@
             <div class="post-header" style="align-items: flex-start;">
             <img src="IMG_2268.jpg" alt="Jacob's Photo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:12px;border:1px solid #dbdbdb;">
             <div style="display: flex; flex-direction: column;">
-                <div class="post-title" style="margin-bottom: 6px;">Lifestyle Post 2: Digital Footprint: The Danger of The School Snapchat Story</div>
+                <div class="post-title" style="margin-bottom: 6px;">Lifestyle Post 3: Digital Footprint: The Danger of The School Snapchat Story</div>
                 <div class="date" style="align-self: flex-end; margin-top: 8px;">September 12, 2025</div>
             </div>
             </div>
@@ -327,6 +327,75 @@
         <span id="like-count-5">0 likes</span>
         </div>
     `;
+
+    //POST 6
+    const post6 = document.createElement('article');
+    post6.id = 'post6';
+    post6.innerHTML = `
+        <div class="post-header" style="align-items: flex-start;">
+            <img src="IMG_2268.jpg" alt="Jacob's Photo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:12px;border:1px solid #dbdbdb;">
+            <div style="display: flex; flex-direction: column;">
+                <div class="post-title" style="margin-bottom: 6px;">Using AI in College (CS Major): Safe, Practical, and Ethical</div>
+                <div class="date" style="align-self: flex-end; margin-top: 8px;">October 5, 2025</div>
+            </div>
+        </div>
+        <div class="post-media">
+            <img src="copilot_king.jpg" alt="AI in College">
+        </div>
+        <details>
+            <summary>How to use AI tools productively as a computer science student</summary>
+            <div>
+                Treat AI as a smart assistant, not a replacement for learning. Use models to:
+                - Generate small examples, skeletons, or alternative approaches when you're stuck.
+                - Explain concepts, algorithms, and unfamiliar library APIs in plain language.
+                - Suggest test cases, edge cases, or debugging strategies for tricky bugs.
+                - Help refactor repetitive code, but always read and understand the changes.
+                Always verify outputs: run the code, write tests, and review for correctness and security.
+            </div>
+        </details>
+        <details>
+            <summary>Safety, privacy, and academic integrity checklist</summary>
+            <div>
+                - Follow your instructor's policy: disclose and cite AI assistance where required.  
+                - Never submit AI-generated work as your own for graded assignments. Use it for learning or drafts only.  
+                - Never paste passwords, API keys, or private datasets into public models. Use local or trusted university tools for sensitive data.  
+                - Keep a reproducible record: note model name/version, prompts, and which parts were AI-assisted.  
+                - Validate for bias and hallucinations—AI can produce plausible but incorrect answers.  
+                - Run linters, static analysis, and security checks on any AI-produced code before use.  
+                - Use version control and code reviews; treat AI output like any third-party snippet you must vet.
+            </div>
+        </details>
+        <div class="like-bar">
+            <button id="like-btn-6">&#9829;</button>
+            <span id="like-count-6">0 likes</span>
+        </div>
+    `;
+    // Ensure posts appear in chronological order (oldest first).
+    // Run after the rest of the script so all posts have been appended.
+    setTimeout(function() {
+        const container = document.querySelector('.container');
+        const articles = Array.from(container.querySelectorAll('article'));
+        articles.sort((a, b) => {
+            const da = a.querySelector('.date')?.textContent?.trim() || '';
+            const db = b.querySelector('.date')?.textContent?.trim() || '';
+            const ta = Date.parse(da);
+            const tb = Date.parse(db);
+            if (isNaN(ta) || isNaN(tb)) return da.localeCompare(db);
+            return ta - tb;
+        });
+        articles.forEach(a => container.appendChild(a));
+    }, 0);
+    document.querySelector('.container').appendChild(post6);
+
+    // Like button functionality (sixth post)
+    let likeCount6 = parseInt(localStorage.getItem('likeCount6') || '0');
+    document.getElementById('like-count-6').textContent = likeCount6 + (likeCount6 === 1 ? ' like' : ' likes');
+    document.getElementById('like-btn-6').addEventListener('click', function() {
+        likeCount6++;
+        localStorage.setItem('likeCount6', likeCount6);
+        document.getElementById('like-count-6').textContent = likeCount6 + (likeCount6 === 1 ? ' like' : ' likes');
+    });
+
     document.querySelector('.container').appendChild(post5);
 
     // Like button functionality (fifth post)
