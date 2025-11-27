@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shiny Hunting — Hobby</title>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <!-- Embedded stylesheet (required) -->
+    <style>
+        /* Basic reset & CRAP-friendly layout */
+        :root{
+            --bg:#0f1720;
+            --card:#0ea5a4;
+            --muted:#94a3b8;
+            --panel:#071023;
+            --accent:#ffcc00;
+            --text:#e6f6f5;
+            --nav-gap: 1rem;
+            --divider: "✨";
+            --max-width:1000px;
+        }
+
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(180deg, var(--bg) 0%, #071428 60%);
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            padding:2rem;
+            display:flex;
+            justify-content:center;
+        }
+
+        .container{
+            width:100%;
+            max-width:var(--max-width);
+            background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(2,6,23,0.75);
+            overflow:hidden;
+        }
+
+        header, footer{
+            padding:1.25rem 1.5rem;
+            background:linear-gradient(90deg, rgba(14,165,164,0.12), rgba(255,204,0,0.03));
+            display:flex;
+            align-items:center;
+            gap:1rem;
+        }
+
+        header h1{
+            margin:0;
+            font-size:1.4rem;
+            letter-spacing:0.6px;
+            color:var(--card);
+            flex:1;
+        }
+
+        nav[aria-label="Section navigation"]{
+            display:flex;
+            gap:var(--nav-gap);
+            align-items:center;
+            flex-wrap:wrap;
+        }
+
+        .nav-link{
+            background:transparent;
+            border:0;
+            color:var(--muted);
+            padding:0.35rem 0.6rem;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:600;
+            display:inline-flex;
+            gap:0.5rem;
+            align-items:center;
+        }
+        .nav-link:hover{ color:var(--text); background:rgba(255,255,255,0.03) }
+        .nav-link.active{
+            color:#042f2e;
+            background:var(--accent);
+            box-shadow:0 6px 18px rgba(0,0,0,0.35);
+        }
+
+        main{
+            padding:2rem;
+            min-height:420px;
+        }
+
+        /* Section "pages" - hide by default */
+        section.page{ display:none; }
+        section.page.active{ display:block; }
+
+        h2{
+            margin-top:0;
+            color:var(--card);
+            font-size:1.25rem;
+        }
+
+        /* Cards and figures */
+        .panel{
+            background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.12));
+            padding:1rem;
+            border-radius:10px;
+            margin-bottom:1rem;
+            border:1px solid rgba(255,255,255,0.03);
+        }
+
+        figure{
+            margin:0 0 0.5rem 0;
+            display:flex;
+            gap:1rem;
+            align-items:flex-start;
+        }
+        figure svg{ width:140px; height:100px; border-radius:8px; flex:0 0 140px; background:linear-gradient(180deg,#062228, #083038); padding:8px;}
+        figcaption{ font-weight:700; color:var(--muted); }
+        .img-note { font-style:italic; color:var(--muted); margin:0.35rem 0 0 0; font-size:0.95rem }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:0.5rem;
+        }
+        th,td{ text-align:left; padding:0.5rem; border-bottom:1px dashed rgba(255,255,255,0.03); }
+        th{ color:var(--card) }
+
+        form label{ display:block; margin:0.45rem 0 0.15rem; color:var(--muted) }
+        input[type="text"], input[type="email"], select, textarea{
+            width:100%; padding:0.6rem; border-radius:8px; border:1px solid rgba(255,255,255,0.04);
+            background:transparent; color:var(--text)
+        }
+        button.cta{
+            background:var(--card); color:#012; padding:0.6rem 0.9rem; border-radius:8px; border:0; font-weight:700; cursor:pointer;
+            margin-top:0.6rem;
+        }
+
+        /* slideshow */
+        .slideshow{ position:relative; width:100%; height:140px; overflow:hidden; border-radius:10px; }
+        .slide{ position:absolute; inset:0; opacity:0; transition:opacity 0.6s ease; display:flex; align-items:center; gap:1rem; padding:1rem; }
+        .slide.visible{ opacity:1; position:relative; }
+        .slide svg{ width:120px; height:90px; flex:0 0 120px; }
+
+        /* footer */
+        footer{ justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;}
+        .validators a{ text-decoration:none; display:inline-block; margin-right:0.5rem; color:var(--muted); background:rgba(255,255,255,0.02); padding:0.45rem 0.6rem; border-radius:8px; }
+        .design { color:var(--muted); font-size:0.95rem }
+        .design a{ color:var(--accent); font-weight:700; text-decoration:none }
+
+        /* small screens */
+        @media (max-width:640px){
+            header,footer{ padding:1rem; }
+            figure{ flex-direction:column; align-items:flex-start }
+            figure svg{ width:100%; height:auto; flex:auto }
+        }
+    </style>
+</head>
+<body>
+    <style>
+        /* Override palette for this hobby page (different from main site) */
+        :root{
+            --bg:#12071a;      /* deep plum */
+            --card:#ff9f43;    /* warm orange */
+            --muted:#bfa6c6;
+            --panel:#0c0610;
+            --accent:#7afcff;  /* cyan accent */
+            --text:#f3eef9;
+            --nav-gap: 0.75rem;
+            --divider: "🍃";
+        }
+    </style>
+
+    <div class="container" role="application" aria-label="Shiny hunting hobby page">
+        <!-- header (inlined with 7 linked buttons) -->
+        <header>
+            <h1>Shiny Hunting — Hobby</h1>
+            <nav aria-label="Section navigation">
+                <button class="nav-link" type="button" data-target="what" aria-pressed="false">What</button>
+                <button class="nav-link" type="button" data-target="who" aria-pressed="false">Who</button>
+                <button class="nav-link" type="button" data-target="when" aria-pressed="false">When</button>
+                <button class="nav-link" type="button" data-target="where" aria-pressed="false">Where</button>
+                <button class="nav-link" type="button" data-target="how" aria-pressed="false">How</button>
+                <button class="nav-link" type="button" data-target="why" aria-pressed="false">Why</button>
+                <button class="nav-link" type="button" data-target="ai" aria-pressed="false">AI Prompts</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- WHAT - default visible -->
+            <section id="what" class="page active" aria-labelledby="what-title">
+                <h2 id="what-title">What: Shiny Hunting in Pokémon</h2>
+
+                <div class="panel">
+                    <p>
+                        Shiny hunting is the pursuit of Pokémon with rare alternate color palettes. It doesn't change competitive value for most games,
+                        but it gives players a unique connection to particular Pokémon and extends the play experience for collectors and completionists.
+                    </p>
+                </div>
+
+                <!-- Local styles to crop gallery images responsively -->
+                <style>
+                    .catch-gallery{ display:flex; gap:1rem; align-items:stretch; width:100%; }
+                    .catch-feature{ flex:1 1 60%; display:block; border-radius:8px; overflow:hidden; background:linear-gradient(180deg,#062228,#083038); box-shadow:0 8px 20px rgba(0,0,0,0.45); }
+                    .catch-side{ flex:0 0 36%; display:flex; flex-direction:column; gap:1rem; }
+                    .crop{ width:100%; overflow:hidden; border-radius:8px; background:transparent; display:block; }
+                    .crop img{ width:100%; height:100%; display:block; object-fit:cover; object-position:center; border:0; }
+                    /* set fixed aspect blocks so images are cropped consistently */
+                    .feature-aspect{ height:260px; }
+                    .side-aspect{ height:124px; }
+                    @media (max-width:640px){
+                        .catch-gallery{ flex-direction:column; }
+                        .catch-side{ flex:1 1 auto; flex-direction:row; gap:0.5rem; }
+                        .feature-aspect{ height:200px; }
+                        .side-aspect{ height:100px; flex:1; }
+                    }
+                </style>
+
+                <figure class="panel" aria-label="Gallery of shiny catches">
+                    <!-- Responsive gallery: one larger feature image + two supporting images -->
+                    <div class="catch-gallery">
+                        <a class="catch-feature crop feature-aspect" href="catch1.jpg" target="_blank" rel="noopener">
+                            <img
+                                src="catch1.jpg"
+                                alt="Close-up of a shiny Pokémon encounter on-screen"
+                                loading="lazy"
+                            />
+                        </a>
+
+                        <div class="catch-side">
+                            <a class="crop side-aspect" href="catch2.jpg" target="_blank" rel="noopener">
+                                <img
+                                    src="catch2.jpg"
+                                    alt="Shiny Pokémon shown in the party/menu screen"
+                                    loading="lazy"
+                                />
+                            </a>
+
+                            <a class="crop side-aspect" href="catch3.jpg" target="_blank" rel="noopener">
+                                <img
+                                    src="catch3.jpg"
+                                    alt="Trainer celebrating after encountering a shiny Pokémon"
+                                    loading="lazy"
+                                />
+                            </a>
+                        </div>
+                    </div>
+
+                    <p class="img-note">
+                        Photos: catch1.jpg, catch2.jpg, catch3.jpg — original photography (and captures) by myself.
+                    </p>
+                    <figcaption id="what-figcap">Featured catches — photos by myself</figcaption>
+                </figure>
+
+                <div class="panel" aria-hidden="false">
+                    <h3 style="margin-top:0;color:var(--muted)">Shiny Odds (typical)</h3>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Typical Odds</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="3" style="padding:0">
+                                    <div role="region" aria-label="Shiny odds list" style="max-height:48vh; overflow:auto; padding:0.6rem;">
+                                        <table style="width:100%; border-collapse:collapse;">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Wild / static encounters (Gen 1–Gen 5)</td>
+                                                    <td>~1 / 8,192</td>
+                                                    <td>Classic pre-Gen‑6 rate used by Red/Blue → Black/White 2. No Shiny Charm; limited player-control methods.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Breeding (Masuda) (Gen 4–Gen 5)</td>
+                                                    <td>~1 / 1,365 (≈6/8,192)</td>
+                                                    <td>Masuda (different-language parents) introduced in Gen‑4; large improvement over base but no Shiny Charm in these gens.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Chaining / Radar methods (Gen 3–Gen 5)</td>
+                                                    <td>Varies — typically better than base (roughly 1/2,000 → 1/1,365 depending on chain)</td>
+                                                    <td>Effect depends on method (PokéRadar, chaining); success requires maintaining a chain and game‑specific technique; results vary widely.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Wild / static encounters (Gen 6 and later)</td>
+                                                    <td>~1 / 4,096</td>
+                                                    <td>Modern baseline introduced in X/Y and used in subsequent mainline titles (more consistent across encounter types).</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Shiny Charm only (Gen 6+)</td>
+                                                    <td>≈3 / 4,096 (≈1 / 1,365)</td>
+                                                    <td>Shiny Charm (post‑Gen‑6 reward for completing the Pokédex) gives extra “rolls” against the shiny check; must be obtained in‑game.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Masuda method (Gen 6+)</td>
+                                                    <td>≈6 / 4,096 (≈1 / 683)</td>
+                                                    <td>Masuda still applies in modern gens and is significantly stronger than the old Masuda values because of the new base rate.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Masuda + Shiny Charm (Gen 6+)</td>
+                                                    <td>≈8 / 4,096 (≈1 / 512)</td>
+                                                    <td>Stacking Masuda with the Shiny Charm gives one of the best consistent breeding odds; widely used for targeted shiny breeding.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>DexNav / SOS / chaining equivalents (Gen 6–Gen 8)</td>
+                                                    <td>Varies — can approach ~1 / 512 in ideal conditions; more commonly 1/683 → 1/1,365</td>
+                                                    <td>Each mechanic is game‑specific (ORAS DexNav, Sun/Moon SOS, etc.). Chain length, encounter modifiers, and charm presence change outcomes.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Max Raid / Event raids (Sword & Shield, etc.)</td>
+                                                    <td>Usually higher than base; exact odds vary by event (sometimes advertised)</td>
+                                                    <td>Game events and special dens often have boosted shiny rates; consult event notes — some events guarantee or greatly increase shiny chance.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Soft‑resetting static legendaries (all gens with a shiny possible)</td>
+                                                    <td>Base odds for that generation (pre‑Gen6: 1/8,192; Gen6+: 1/4,096)</td>
+                                                    <td>Repeatedly resetting until the encounter is shiny. Some modern titles (and specific distributed legendaries) are shiny‑locked and cannot be shiny.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Pokémon GO (wild / Community Day / raids)</td>
+                                                    <td>Varies by event & species — base wild odds differ; Community Day often heavily boosted (estimates vary widely, commonly much higher than 1/500)</td>
+                                                    <td>GO uses its own shiny system. Niantic sometimes advertises increased shiny odds for events; community/raid odds are game‑specific and can be far better than mainline games.</td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Summary / practical advice</td>
+                                                    <td>Use Masuda + Shiny Charm (Gen6+) or target game‑specific chaining/event methods</td>
+                                                    <td>Numbers above are approximate—check a trusted, game‑specific resource (Bulbapedia / Serebii / official event notes) for exact mechanics and any recent changes.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- WHO -->
+            <section id="who" class="page" aria-labelledby="who-title">
+                <h2 id="who-title">Who: The Hunters & Community</h2>
+
+                <div class="panel">
+                    <p>Shiny hunters include completionists, speedrunners, casual players, and social collectors. Communities form around trading, streaming shiny finds, and sharing methods — both in local groups and online.</p>
+                </div>
+
+                <figure class="panel" aria-labelledby="who-figcap">
+                    <svg role="img" aria-label="Trainer silhouette with sparkle" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" rx="8" fill="#062028"/>
+                        <circle cx="44" cy="36" r="14" fill="#ffcc00"/>
+                        <g fill="#0ea5a4">
+                            <rect x="76" y="26" width="86" height="56" rx="6"></rect>
+                        </g>
+                        <text x="78" y="60" font-size="12" fill="#021014" font-weight="700">Hunter</text>
+                    </svg>
+                    <div>
+                        <p class="img-note"></p>
+                    </div>
+                    <figcaption id="who-figcap">Shiny hunter profile</figcaption>
+                </figure>
+
+                <div class="panel">
+                    <h3 style="color:var(--muted)">Join a shiny community</h3>
+                    <form aria-label="Join the shiny club form">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" placeholder="In-game name or handle" />
+
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" />
+
+                        <label for="era">Preferred methods</label>
+                        <select id="era" name="era">
+                            <option>Masuda Method (breeding)</option>
+                            <option>Chain/Old Rod / SOS</option>
+                            <option>Community Day & Raid Events</option>
+                        </select>
+
+                        <button class="cta" type="button" onclick="alert('Thanks! This is a demo form.');">Join (demo)</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- WHEN -->
+            <section id="when" class="page" aria-labelledby="when-title">
+                <h2 id="when-title">When: Best Times & Events</h2>
+
+                <div class="panel">
+                    <p>Certain events and windows greatly increase shiny opportunities: Community Days, Raid Hours, limited-time spawns, and special distributions. Knowing release calendars helps plan focused hunts.</p>
+                </div>
+
+                <figure class="panel" aria-labelledby="when-figcap">
+                    <svg role="img" aria-label="Calendar and event" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" rx="8" fill="#071428"/>
+                        <rect x="12" y="18" width="196" height="86" rx="6" fill="#0ea5a4"/>
+                        <text x="22" y="50" font-size="12" fill="#021014" font-weight="700">Community Day</text>
+                        <text x="22" y="70" font-size="10" fill="#021014">Timed events and raids boost odds</text>
+                    </svg>
+                    <div>
+                        <p class="img-note"></p>
+                    </div>
+                    <figcaption id="when-figcap">Event calendar snapshot</figcaption>
+                </figure>
+
+                <div class="panel">
+                    <h3 style="color:var(--muted)">Typical timing tips</h3>
+                    <table>
+                        <thead><tr><th>When</th><th>Why</th></tr></thead>
+                        <tbody>
+                            <tr><td>Event windows</td><td>Higher spawn rates / guaranteed boosts</td></tr>
+                            <tr><td>Night / weather in-game</td><td>Some species or raids appear more often</td></tr>
+                            <tr><td>After updates</td><td>New spawns and distributions may include shinies</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- WHERE -->
+            <section id="where" class="page" aria-labelledby="where-title">
+                <h2 id="where-title">Where: Games & Methods</h2>
+
+                <div class="panel">
+                    <p>Shiny hunting methods vary by game: breeding (Masuda method), chaining (Gen-specific), DexNav, SOS chaining, Max Raid battles, or persistent soft-resetting for static encounters. Choose a method that matches your platform and patience.</p>
+                </div>
+
+                <figure class="panel" aria-labelledby="where-figcap">
+                    <svg role="img" aria-label="Game platforms illustration" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" rx="8" fill="#04121a"/>
+                        <rect x="16" y="34" width="188" height="64" rx="6" fill="#ffcc00"/>
+                        <text x="26" y="70" font-size="14" fill="#021014" font-weight="800">Switch / GO / Mobile</text>
+                    </svg>
+                    <div>
+                        <p class="img-note"></p>
+                    </div>
+                    <figcaption id="where-figcap">Common platforms for hunts</figcaption>
+                </figure>
+
+                <div class="panel">
+                    <h3 style="color:var(--muted)">Recommended sources & tools</h3>
+                    <ul>
+                        <li><a href="#" style="color:var(--card)">Community guides (Method-specific)</a></li>
+                        <li><a href="#" style="color:var(--card)">IV calculators & trackers</a></li>
+                        <li>Discord / Twitter / Reddit groups for trades and tips</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- HOW -->
+            <section id="how" class="page" aria-labelledby="how-title">
+                <h2 id="how-title">How: Common Shiny Methods & Best Practices</h2>
+
+                <div class="panel">
+                    <p>Choose a method (breeding, chaining, raid hunting) and stack odds where possible: Shiny Charm, event boosts, or community days. Keep organized records of encounters and trades; patience and consistency are crucial.</p>
+                </div>
+
+                <figure class="panel" aria-labelledby="how-figcap">
+                    <svg role="img" aria-label="Methods illustration" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" rx="8" fill="#041a20"/>
+                        <rect x="18" y="18" width="80" height="64" rx="6" fill="#ff7ab6"/>
+                        <rect x="110" y="28" width="62" height="46" rx="6" fill="#0ea5a4"/>
+                        <text x="24" y="60" font-size="11" fill="#021014" font-weight="700">Methods</text>
+                    </svg>
+                    <div>
+                        <p class="img-note"></p>
+                    </div>
+                    <figcaption id="how-figcap">Breeding, chaining & raids</figcaption>
+                </figure>
+
+                <!-- simple JS slideshow -->
+                <div class="panel">
+                    <h3 style="color:var(--muted)">Hunting Tips Slideshow</h3>
+                    <div class="slideshow" id="slideshow" aria-live="polite">
+                        <div class="slide visible" data-index="0">
+                            <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" rx="6" fill="#ffcc00"/><text x="12" y="56" font-size="14" fill="#021014">Masuda Method</text></svg>
+                            <div><strong>Tip 1:</strong> Breed Pokémon from different regions to boost shiny odds (Masuda). Combine with Shiny Charm when available.</div>
+                        </div>
+                        <div class="slide" data-index="1">
+                            <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" rx="6" fill="#0ea5a4"/><text x="12" y="56" font-size="14" fill="#021014">Chaining</text></svg>
+                            <div><strong>Tip 2:</strong> Use chaining/SOS/DexNav where applicable to increase odds; maintain the chain carefully to keep bonuses.</div>
+                        </div>
+                        <div class="slide" data-index="2">
+                            <svg viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" rx="6" fill="#ff7ab6"/><text x="12" y="56" font-size="14" fill="#021014">Raid & Event</text></svg>
+                            <div><strong>Tip 3:</strong> Participate in raids, community days, and events — often the fastest way to find shinies en masse.</div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:0.6rem">
+                        <button class="cta" type="button" id="prevSlide">Prev</button>
+                        <button class="cta" type="button" id="nextSlide">Next</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHY -->
+            <section id="why" class="page" aria-labelledby="why-title">
+                <h2 id="why-title">Why: The Appeal of Shiny Hunting</h2>
+
+                <div class="panel">
+                    <p>Shiny hunting mixes rarity-driven excitement with collection goals and social sharing. The thrill of seeing a different color after hundreds of encounters keeps many players engaged for years.</p>
+                </div>
+
+                <figure class="panel" aria-labelledby="why-figcap">
+                    <svg role="img" aria-label="Heart and spark illustration" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100%" height="100%" rx="8" fill="#041428"/>
+                        <path d="M60 54c8-12 30-12 38 0 4 6 4 14 0 20-8 12-30 12-38 0-4-6-4-14 0-20z" fill="#ff7ab6"/>
+                        <text x="110" y="78" font-size="12" fill="#0ea5a4">Discovery</text>
+                    </svg>
+                    <div>
+                        <p class="img-note"></p>
+                    </div>
+                    <figcaption id="why-figcap">The joy of rare discovery</figcaption>
+                </figure>
+
+                <div class="panel">
+                    <blockquote style="margin:0;padding-left:0.8rem;border-left:4px solid var(--card);color:var(--muted)">
+                        "Finding a shiny after a long hunt makes all the practice and patience feel worth it."
+                        <footer style="margin-top:0.4rem;font-size:0.9rem;color:var(--muted)">— A dedicated shiny hunter</footer>
+                    </blockquote>
+                </div>
+            </section>
+
+            <section id="ai" class="page" aria-labelledby="ai-title">
+                <h2 id="ai-title">AI Prompts / Notes</h2>
+
+                <div class="panel">
+                    <p>I did not use AI to generate the images on this page in any way. All SVG images are original illustrations created by myself. GitHub CoPilot was utilized throughout the code to sharpen UI implementation and color scheme.</p>
+                </div>
+
+                <div class="panel">
+                    <h3 style="color:var(--muted)">Development notes</h3>
+                    <ul>
+                        <li>Single-file hobby site with embedded stylesheet (per assignment).</li>
+                        <li>Section navigation hides all other sections (controlled by JavaScript).</li>
+                        <li>Design follows CRAP principles: consistent colors, alignment, contrast, and repetition.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="validators" aria-hidden="false">
+                <a href="https://validator.w3.org/" target="_blank" rel="noopener">Validate HTML</a>
+                <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">Validate CSS</a>
+            </div>
+            <div class="design">Design & content — <a href="https://webpages.charlotte.edu/jbell92/itis3135/jbell_designs/" aria-label="Author profile link">JBell Designs</a></div>
+        </footer>
+        </footer>
+    </div>
+    <!-- Include HTML include helper so header/footer components are pulled in -->
+    <script src="scripts/HTMLInclude.min.js"></script>
+
+    <!-- JavaScript to switch sections and operate slideshow (converted to regular functions for broader linter compatibility) -->
+    <script>
+        // Navigation: show only the selected section
+        (function(){
+            var navButtons = document.querySelectorAll('.nav-link');
+            var pages = document.querySelectorAll('.page');
+
+            function showPage(id){
+                Array.prototype.forEach.call(pages, function(p){
+                    if (p.id === id){
+                        p.classList.add('active');
+                    } else {
+                        p.classList.remove('active');
+                    }
+                });
+                Array.prototype.forEach.call(navButtons, function(b){
+                    var isActive = b.dataset.target === id;
+                    b.classList.toggle('active', isActive);
+                    b.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                });
+                // move focus to the section heading for accessibility
+                var heading = document.querySelector('#' + id + ' h2');
+                if (heading){
+                    heading.setAttribute('tabindex','-1');
+                    heading.focus();
+                }
+                // Make sure there's no page scroll to other content (pages hidden)
+                window.scrollTo(0,0);
+            }
+
+            Array.prototype.forEach.call(navButtons, function(btn){
+                btn.addEventListener('click', function(e){
+                    var target = btn.getAttribute('data-target');
+                    showPage(target);
+                    // Update URL hash (optional)
+                    history.replaceState(null, '', '#'+target);
+                });
+            });
+
+            // Load page from hash if present
+            var initial = location.hash ? location.hash.substring(1) : 'what';
+            showPage(initial);
+        })();
+
+        // Simple slideshow for the How section
+        (function(){
+            var slides = document.querySelectorAll('#slideshow .slide');
+            if (!slides.length) return;
+            var idx = 0;
+            function show(i){
+                Array.prototype.forEach.call(slides, function(s){
+                    var sIndex = +s.dataset.index;
+                    if (sIndex === i){
+                        s.classList.add('visible');
+                    } else {
+                        s.classList.remove('visible');
+                    }
+                });
+            }
+            var prev = document.getElementById('prevSlide');
+            var next = document.getElementById('nextSlide');
+            if (prev){
+                prev.addEventListener('click', function(){
+                    idx = (idx - 1 + slides.length) % slides.length;
+                    show(idx);
+                });
+            }
+            if (next){
+                next.addEventListener('click', function(){
+                    idx = (idx + 1) % slides.length;
+                    show(idx);
+                });
+            }
+            // auto-rotate every 6s
+            setInterval(function(){
+                idx = (idx + 1) % slides.length;
+                show(idx);
+            }, 6000);
+        })();
+    </script>
+
+</body>
+</html>
