@@ -551,6 +551,51 @@
             <span id="like-count-11">0 likes</span>
         </div>
     `;
+
+    const post12 = document.createElement('article');
+    post12.id = 'post12';
+    post12.innerHTML = `
+        <div class="post-header" style="align-items: flex-start;">
+            <img src="IMG_2268.jpg" alt="Jacob's Photo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:12px;border:1px solid #dbdbdb;">
+            <div style="display: flex; flex-direction: column;">
+                <div class="post-title" style="margin-bottom: 6px;">Emotion Contagion: How Moods Spread on Campus (and How to Stay Grounded)</div>
+                <div class="date" style="align-self: flex-end; margin-top: 8px;">November 19, 2025</div>
+            </div>
+        </div>
+        <div class="post-media">
+            <img src="post12.jpg" alt="Emotion Contagion Graphic">
+        </div>
+        <details open>
+            <summary>Did you know emotions are contagious in college?</summary>
+            <div>
+                When you’re surrounded by stressed, anxious, or excited classmates, you might start to feel those same emotions—even if you weren’t before. This is called <strong>emotion contagion</strong>, and it’s common in close-knit environments like dorms, study groups, and campus events. While sharing joy can boost your mood, picking up on negativity can drain your energy or increase anxiety.
+            </div>
+        </details>
+        <details>
+            <summary>How to ground yourself and protect your mood</summary>
+            <div>
+                - Notice your feelings: Pause and ask, “Is this mine, or am I picking it up from others?”<br>
+                - Take breaks: Step outside, listen to music, or spend time alone to reset.<br>
+                - Practice deep breathing or mindfulness to stay present.<br>
+                - Set boundaries: It’s okay to limit time with people who are constantly negative.<br>
+                - Seek out positive influences—spend time with friends who lift you up!
+            </div>
+        </details>
+        <div class="like-bar">
+            <button id="like-btn-12">&#9829;</button>
+            <span id="like-count-12">0 likes</span>
+        </div>
+    `;
+    document.querySelector('.container').appendChild(post12);
+
+    // Like button functionality (twelfth post)
+    let likeCount12 = parseInt(localStorage.getItem('likeCount12') || '0');
+    document.getElementById('like-count-12').textContent = likeCount12 + (likeCount12 === 1 ? ' like' : ' likes');
+    document.getElementById('like-btn-12').addEventListener('click', function() {
+        likeCount12++;
+        localStorage.setItem('likeCount12', likeCount12);
+        document.getElementById('like-count-12').textContent = likeCount12 + (likeCount12 === 1 ? ' like' : ' likes');
+    });
     document.querySelector('.container').appendChild(post11);
 
     // Like button functionality (eleventh post)
