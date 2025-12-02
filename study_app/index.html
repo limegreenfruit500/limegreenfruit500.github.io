@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Scale Trainer</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <button id="lightdark">☀️/🌙</button>
+    </div>
+
+    <div class="category-bar">
+        <button class="cat" data-group="all">All</button>
+        <button class="cat" data-group="pentatonic">Pentatonic</button>
+        <button class="cat" data-group="hexatonic">Hexatonic</button>
+        <button class="cat" data-group="modes">Modes</button>
+        <button class="cat" data-group="variants">Variants</button>
+        <button class="cat" data-group="octatonic">Octatonic</button>
+        <button class="cat" data-group="chromatic">Chromatic</button>
+        <button class="cat" data-group="twelve">12-Tone</button>
+    </div>
+
+    <div class="app-container">
+
+        <div id="flashcard" class="card"></div>
+
+        <div class="controls">
+            <button id="flipBtn">Show Answer</button>
+            <button id="nextBtn">Next</button>
+            <button id="markBtn">Mastered</button>
+            <button id="audioBtn">Play Video</button>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
