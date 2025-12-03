@@ -1,14 +1,27 @@
+/* GLOBAL FIX for elements that use width + padding */
+section.highlighting *,
+section.centeredc *,
+section.centerede *,
+#colorbox,
+main,
+.maincontainer,
+img,
+video,
+button,
+.button,
+a.buttonlike {
+    box-sizing: border-box;
+}
+
 /* Safer color palette and accessibility improvements */
 section.highlighting * {
     background-color: #fff9e5;
-    /* softer yellow */
     border-radius: 8px;
     padding: 8px 16px;
 }
 
 section.centeredc * {
     background-color: #e3f2fd;
-    /* lighter blue */
     text-align: center;
     border-radius: 8px;
     padding: 8px 16px;
@@ -16,7 +29,6 @@ section.centeredc * {
 
 section.centerede * {
     background-color: #a3e4d7;
-    /* softer green */
     color: #222;
     margin: auto;
     max-width: 500px;
@@ -24,6 +36,8 @@ section.centerede * {
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(88, 214, 141, 0.12);
     padding: 16px 24px;
+    box-sizing: border-box;
+    /* FIXED */
 }
 
 body {
@@ -52,6 +66,8 @@ main {
     border-radius: 18px;
     box-shadow: 0 4px 24px rgba(52, 73, 94, 0.08);
     padding: 32px 24px;
+    box-sizing: border-box;
+    /* FIXED */
 }
 
 #colorbox {
@@ -69,6 +85,8 @@ main {
     color: #fff;
     font-weight: 600;
     letter-spacing: 1px;
+    box-sizing: border-box;
+    /* FIXED */
 }
 
 /* MOBILE RULES */
@@ -90,6 +108,8 @@ main,
         font-size: 1.5rem;
         margin: 32px auto;
         border-radius: 18px;
+        box-sizing: border-box;
+        /* FIXED */
     }
 
     main {
@@ -120,7 +140,6 @@ main,
         font-size: 1.08rem;
     }
 
-    /* Responsive images/videos for laptops */
     img,
     video {
         max-width: 95%;
@@ -152,6 +171,8 @@ main,
         border-radius: 16px;
         box-shadow: 0 3px 12px rgba(76, 214, 172, 0.13);
         padding: 0 10px;
+        box-sizing: border-box;
+        /* FIXED */
     }
 
     main {
@@ -182,7 +203,6 @@ main,
         font-size: 1.06rem;
     }
 
-    /* Responsive images/videos for tablets */
     img,
     video {
         max-width: 98%;
@@ -213,6 +233,8 @@ main,
         margin: 24px auto;
         border-radius: 14px;
         padding: 0 8px;
+        box-sizing: border-box;
+        /* FIXED */
     }
 
     main {
@@ -243,7 +265,6 @@ main,
         font-size: 1rem;
     }
 
-    /* Make images and videos responsive */
     img,
     video {
         max-width: 100%;
@@ -251,7 +272,6 @@ main,
         border-radius: 8px;
     }
 
-    /* Improve tap target size for buttons/links */
     button,
     .button,
     a.buttonlike {
