@@ -1,45 +1,147 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Introduction Form</title>
     <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
     <style>
-        /* Minimal styling to mirror an "introduction" page look */
-        body { font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin: 0; padding: 0 1rem; color: #222; background: #f7f9fb; }
-        header, footer { background:#0b5f3a; color:#fff; padding:1rem; }
-        main { max-width:900px; margin: 1.25rem auto; background:#fff; padding:1.25rem; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-        h1 { margin:0 0 .25rem 0; font-size:1.25rem; }
-        h2 { margin-top:.25rem; color:#0b5f3a }
-        label { display:block; margin-top:.6rem; font-weight:600; }
-        input[type="text"], input[type="date"], input[type="url"], textarea, select {
-            width:100%; padding:.5rem; margin-top:.25rem; border:1px solid #ddd; border-radius:4px; box-sizing:border-box;
+        body {
+            font-family: Arial, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            margin: 0;
+            padding: 0 1rem;
+            color: #222;
+            background: #f7f9fb;
         }
-        textarea { min-height:100px; resize:vertical; }
-        .row { display:flex; gap:.5rem; }
-        .row > * { flex:1; }
-        .small { width:9rem; }
-        .controls { margin-top:1rem; display:flex; gap:.5rem; flex-wrap:wrap; }
-        button { padding:.5rem .8rem; border-radius:5px; border:1px solid #0b5f3a; background:#0b5f3a; color:#fff; cursor:pointer; }
-        button[type="reset"] { background:#fff; color:#0b5f3a; }
-        .clear { background:#d9534f; border-color:#d9534f; }
-        .courses { margin-top:.5rem; }
-        .course-item { display:flex; gap:.5rem; margin-top:.5rem; align-items:center; }
-        .course-item input { flex:1; }
-        .delete-course { background:#c0392b; border:0; padding:.4rem .6rem; color:#fff; border-radius:4px; cursor:pointer; }
-        .preview-img { max-width:240px; display:block; margin-top:.5rem; border-radius:6px; }
-        .result-section { margin-top:1rem; }
-        .links a { display:inline-block; margin-right:.5rem; color:#0b5f3a; }
-        .muted { color:#666; font-style:italic; font-size:.95rem; }
-        .hidden { display:none; }
-        .divider-preview { font-size:1.2rem; margin: .4rem 0; }
+
+        header,
+        footer {
+            background: #0b5f3a;
+            color: #fff;
+            padding: 1rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 1.25rem auto;
+            background: #fff;
+            padding: 1.25rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            margin: 0 0 .25rem 0;
+            font-size: 1.25rem;
+        }
+
+        h2 {
+            margin-top: .25rem;
+            color: #0b5f3a
+        }
+
+        label {
+            display: block;
+            margin-top: .6rem;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="url"],
+        textarea {
+            width: 100%;
+            padding: .5rem;
+            margin-top: .25rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .row {
+            display: flex;
+            gap: .5rem;
+        }
+
+        .row>* {
+            flex: 1;
+        }
+
+        .controls {
+            margin-top: 1rem;
+            display: flex;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: .5rem .8rem;
+            border-radius: 5px;
+            border: 1px solid #0b5f3a;
+            background: #0b5f3a;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="reset"] {
+            background: #fff;
+            color: #0b5f3a;
+        }
+
+        .clear {
+            background: #d9534f;
+            border-color: #d9534f;
+        }
+
+        .course-item {
+            display: flex;
+            gap: .5rem;
+            margin-top: .5rem;
+            align-items: center;
+        }
+
+        .course-item input {
+            flex: 1;
+        }
+
+        .delete-course {
+            background: #c0392b;
+            border: 0;
+            padding: .4rem .6rem;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .preview-img {
+            max-width: 240px;
+            display: block;
+            margin-top: .5rem;
+            border-radius: 6px;
+        }
+
+        .muted {
+            color: #666;
+            font-style: italic;
+            font-size: .95rem;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
+
     <header>
         <h1>My Website Header</h1>
-        <!-- If your header is normally loaded via JS, it will be replaced here -->
     </header>
 
     <main>
@@ -47,115 +149,128 @@
         <h3>Please submit the form below.</h3>
 
         <form id="introForm">
-            <!-- Personal name fields -->
+
             <div class="row">
                 <div>
                     <label for="first">First Name *</label>
-                    <input id="first" name="first" type="text" required placeholder="First name" value="">
+                    <input id="first" name="first" type="text" required value="Jacob">
                 </div>
                 <div>
                     <label for="middle">Middle Name / Initial</label>
-                    <input id="middle" name="middle" type="text" placeholder="Middle name or initial" value="">
+                    <input id="middle" name="middle" type="text" value="M.">
                 </div>
                 <div>
                     <label for="last">Last Name *</label>
-                    <input id="last" name="last" type="text" required placeholder="Last name" value="">
+                    <input id="last" name="last" type="text" required value="Bell">
                 </div>
             </div>
 
             <label for="nick">Nickname / Preferred Name</label>
-            <input id="nick" name="nick" type="text" placeholder="Preferred name" value="">
+            <input id="nick" name="nick" type="text" value="">
 
             <label for="ack">Acknowledgment Statement *</label>
-            <input id="ack" name="ack" type="text" required placeholder="I, ___ _ ___, acknowledge that this introduction is mine." value="">
+            <input id="ack" name="ack" type="text" required
+                value="I acknowledge that this information is public, along with anything I post on it. – JMB">
 
             <label for="ackDate">Acknowledgement Date *</label>
-            <input id="ackDate" name="ackDate" type="text" required placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}" title="Enter date as YYYY-MM-DD">
+            <input id="ackDate" name="ackDate" type="text" required pattern="\d{4}-\d{2}-\d{2}" value="2025-08-24">
 
             <div class="row">
                 <div>
                     <label for="mascAdj">Mascot Adjective *</label>
-                    <input id="mascAdj" name="mascAdj" type="text" required placeholder="Mascot adjective" value="">
+                    <input id="mascAdj" name="mascAdj" type="text" required value="Jolly">
                 </div>
                 <div>
                     <label for="mascAnimal">Mascot Animal *</label>
-                    <input id="mascAnimal" name="mascAnimal" type="text" required placeholder="Mascot animal" value="">
+                    <input id="mascAnimal" name="mascAnimal" type="text" required value="Baboon">
                 </div>
                 <div>
                     <label for="divider">Divider *</label>
-                    <input id="divider" name="divider" type="text" required placeholder="e.g. ~ | ♥" value="">
+                    <input id="divider" name="divider" type="text" required value="~">
                 </div>
             </div>
 
-            <!-- Picture upload and caption -->
             <label for="picture">Picture (you can upload a new one)</label>
             <input id="picture" name="picture" type="file" accept="image/*">
             <img id="picturePreview" class="preview-img" src="images/me.jpg" alt="Picture preview">
+
             <label for="picCaption">Picture Caption</label>
-            <input id="picCaption" name="picCaption" type="text" placeholder="Caption for picture" value="">
+            <input id="picCaption" name="picCaption" type="text" value="Me and my cat Ava. 2024">
 
-            <!-- Personal statement -->
             <label for="statement">Personal Statement *</label>
-            <textarea id="statement" name="statement" required placeholder="Write your personal statement here..."></textarea>
+            <textarea id="statement" name="statement"
+                required>Hello! I’m Jacob and I am a junior here at UNC Charlotte double majoring in Music and Computer Science with a concentration in Software Engineering! I spend my days at my apartment with an overweight cat yelling at me to feed her and get in my lap constantly. I also love hanging out with friends, playing video games, and practicing my violin.</textarea>
 
-            <!-- 7 main bullets -->
-            <fieldset style="margin-top:1rem; border:1px dashed #ddd; padding: .75rem;">
+            <fieldset style="margin-top:1rem; border:1px dashed #ddd; padding:.75rem;">
                 <legend><strong>7 Main Bullets</strong></legend>
-                <label for="b1">1</label>
-                <input id="b1" name="b1" type="text" required placeholder="Personal background" value="">
-                <label for="b2">2</label>
-                <input id="b2" name="b2" type="text" required placeholder="Academic background" value="">
-                <label for="b3">3</label>
-                <input id="b3" name="b3" type="text" required placeholder="Interests" value="">
-                <label for="b4">4</label>
-                <input id="b4" name="b4" type="text" required placeholder="Skills" value="">
-                <label for="b5">5</label>
-                <input id="b5" name="b5" type="text" required placeholder="Goals" value="">
-                <label for="b6">6</label>
-                <input id="b6" name="b6" type="text" required placeholder="Favorite things" value="">
-                <label for="b7">7</label>
-                <input id="b7" name="b7" type="text" required placeholder="Misc." value="">
+
+                <label>1</label>
+                <input id="b1" name="b1" type="text" required
+                    value="I am 20 years old, born and raised in the Clemmons / Winston-Salem where I graduated from West-Forsyth High School. I have been interested in technology since I got my first DSi, and have been playing violin since the 5th grade!">
+
+                <label>2</label>
+                <input id="b2" name="b2" type="text" required
+                    value="Most recently, I worked in food service at Panera near my hometown, but previously I worked and played with Opera Carolina and the International Lyric Academy in Charlotte in summer of 2023.">
+
+                <label>3</label>
+                <input id="b3" name="b3" type="text" required
+                    value="I love hanging out with friends, playing video games, and practicing my violin.">
+
+                <label>4</label>
+                <input id="b4" name="b4" type="text" required
+                    value="Double major in Music and Computer Science; professional musical experience; strong interest in software engineering & performance.">
+
+                <label>5</label>
+                <input id="b5" name="b5" type="text" required
+                    value="Become a software engineer + continue violin performance; graduate with Honors.">
+
+                <label>6</label>
+                <input id="b6" name="b6" type="text" required
+                    value="My overweight cat Ava; Overwatch; video games; violin; music history.">
+
+                <label>7</label>
+                <input id="b7" name="b7" type="text" required value="Custom Desktop, Windows 11 Pro, Apartment Setup.">
             </fieldset>
 
-            <!-- Courses (dynamic) -->
-            <fieldset style="margin-top:1rem; border:1px dashed #ddd; padding: .75rem;">
-                <legend><strong>Courses</strong> <span class="muted">(add or remove items)</span></legend>
+            <fieldset style="margin-top:1rem; border:1px dashed #ddd; padding:.75rem;">
+                <legend><strong>Courses</strong></legend>
+
                 <div id="courses" class="courses">
-                    <!-- prefilled course -->
                     <div class="course-item">
-                        <input name="courseDept" placeholder="Department (e.g., ITIS)" value="ITIS">
-                        <input name="courseNumber" placeholder="Number (e.g., 3135)" value="3135">
-                        <input name="courseName" placeholder="Course name" value="Intro to Web Dev">
-                        <input name="courseReason" placeholder="Reason for taking" value="To build accessible websites">
-                        <button type="button" class="delete-course" title="Delete course">✖</button>
+                        <input name="courseDept" value="ITIS">
+                        <input name="courseNumber" value="3135">
+                        <input name="courseName" value="Front-End Web Application Development">
+                        <input name="courseReason"
+                            value="Important course on concentration track necessary to be able to develop projects individually.">
+                        <button type="button" class="delete-course">✖</button>
                     </div>
                 </div>
-                <div style="margin-top:.6rem;">
-                    <button id="addCourse" type="button">Add Course</button>
-                </div>
+
+                <button id="addCourse" type="button" style="margin-top:.6rem;">Add Course</button>
             </fieldset>
 
-            <!-- Quote -->
             <label for="quote">Favorite Quote *</label>
-            <input id="quote" name="quote" type="text" required placeholder="Favorite Quote" value="">
+            <input id="quote" name="quote" type="text" required value="The grass is green where you water it.">
 
             <label for="quoteAuthor">Quote Author *</label>
-            <input id="quoteAuthor" name="quoteAuthor" type="text" required placeholder="Author" value="Unknown">
+            <input id="quoteAuthor" name="quoteAuthor" type="text" required value="Jalen Hurts">
 
             <label for="funny">Funny thing (optional)</label>
-            <input id="funny" name="funny" type="text" placeholder="Something funny" value="">
+            <input id="funny" name="funny" type="text"
+                value="I used to lower my voice in top 500 Overwatch lobbies when I was 12 so I wouldn’t get flamed for bossing people around in team chat.">
 
             <label for="share">Something I would like to share (optional)</label>
-            <textarea id="share" name="share" placeholder="Share something interesting..."></textarea>
+            <textarea id="share" name="share">I love my cat!</textarea>
 
-            <!-- Links -->
-            <fieldset style="margin-top:1rem; border:1px dashed #ddd; padding: .75rem;">
+            <fieldset style="margin-top:1rem; border:1px dashed #ddd; padding:.75rem;">
                 <legend><strong>Links (5)</strong></legend>
-                <input name="link1" type="url" placeholder="https://linkedin.com/..." value="">
-                <input name="link2" type="url" placeholder="https://github.com/..." value="">
-                <input name="link3" type="url" placeholder="https://..." value="">
-                <input name="link4" type="url" placeholder="https://..." value="">
-                <input name="link5" type="url" placeholder="https://..." value="">
+
+                <input name="link1" type="url" value="https://webpages.charlotte.edu/jbell92/">
+                <input name="link2" type="url" value="https://github.com/limegreenfruit500">
+                <input name="link3" type="url" value="https://github.com/limegreenfruit500/limegreenfruit500.github.io">
+                <input name="link4" type="url"
+                    value="https://github.com/limegreenfruit500/limegreenfruit500.github.io/tree/main/itis3135">
+                <input name="link5" type="url" value="https://www.freecodecamp.org/jbell92">
             </fieldset>
 
             <div class="controls">
@@ -165,8 +280,9 @@
             </div>
         </form>
 
-        <!-- The result will be injected here -->
-        <section id="result" class="result-section hidden" aria-live="polite"><h2 class="hidden">Result</h2></section>
+        <section id="result" class="result-section hidden">
+            <h2 class="hidden">Result</h2>
+        </section>
 
     </main>
 
@@ -175,7 +291,6 @@
     </footer>
 
     <script>
-        // Inline JS for functionality. Move to Scripts/introduction.js if preferred.
         (function () {
             const form = document.getElementById('introForm');
             const result = document.getElementById('result');
@@ -185,7 +300,6 @@
             const pictureInput = document.getElementById('picture');
             const picturePreview = document.getElementById('picturePreview');
 
-            // Utility to escape text for HTML insertion
             function escapeHtml(s) {
                 if (!s) return '';
                 return String(s)
@@ -196,86 +310,81 @@
                     .replace(/'/g, "&#039;");
             }
 
-            // Add course function
-            function addCourse(data = {}, focus=false) {
+            function addCourse(data = {}, focus = false) {
                 const div = document.createElement('div');
                 div.className = 'course-item';
                 div.innerHTML = `
-                    <input name="courseDept" placeholder="Department (e.g., ITIS)" value="${escapeHtml(data.dept || '')}">
-                    <input name="courseNumber" placeholder="Number (e.g., 3135)" value="${escapeHtml(data.number || '')}">
-                    <input name="courseName" placeholder="Course name" value="${escapeHtml(data.name || '')}">
-                    <input name="courseReason" placeholder="Reason for taking" value="${escapeHtml(data.reason || '')}">
-                    <button type="button" class="delete-course" title="Delete course">✖</button>
-                `;
+            <input name="courseDept" value="${escapeHtml(data.dept || '')}">
+            <input name="courseNumber" value="${escapeHtml(data.number || '')}">
+            <input name="courseName" value="${escapeHtml(data.name || '')}">
+            <input name="courseReason" value="${escapeHtml(data.reason || '')}">
+            <button type="button" class="delete-course">✖</button>
+        `;
                 coursesContainer.appendChild(div);
                 if (focus) div.querySelector('input').focus();
-                // attach delete handler
-                div.querySelector('.delete-course').addEventListener('click', () => {
+                div.querySelector('.delete-course').addEventListener('click', (e) => {
                     div.remove();
                 });
             }
 
-            // Preview default image is "images/me.jpg". If you have a different path, update the src in HTML.
             pictureInput.addEventListener('change', (e) => {
                 const file = e.target.files[0];
                 if (!file) return;
                 const reader = new FileReader();
-                reader.onload = () => { picturePreview.src = reader.result; };
+                reader.onload = () => {
+                    picturePreview.src = reader.result;
+                };
                 reader.readAsDataURL(file);
             });
 
-            // Clear button: empties all inputs and textareas (keeps preview disabled)
-            clearBtn.addEventListener('click', () => {
+            clearBtn.addEventListener('click', (e) => {
                 Array.from(form.querySelectorAll('input')).forEach((i) => {
                     if (i.type === 'file') {
                         i.value = '';
-                        // reset preview to default image path
                         picturePreview.src = 'images/me.jpg';
                     } else {
                         i.value = '';
                     }
                 });
-                Array.from(form.querySelectorAll('textarea')).forEach((t) => t.value = '');
-                // remove dynamic courses leaving none
+                Array.from(form.querySelectorAll('textarea')).forEach((t) => {
+                    t.value = '';
+                });
                 coursesContainer.innerHTML = '';
             });
 
-            // Reset button uses native form.reset() behavior handled by browser; preview should be restored to default
-            form.addEventListener('reset', () => {
-                setTimeout(() => { // allow native reset to finish
+            form.addEventListener('reset', (e) => {
+                setTimeout(() => {
                     picturePreview.src = 'images/me.jpg';
-                    // ensure at least one course exists by resetting the container to one default item if none exist
                     if (!coursesContainer.querySelector('.course-item')) {
                         addCourse({
                             dept: 'ITIS',
                             number: '3135',
-                            name: 'Intro to Web Dev',
-                            reason: 'To build accessible websites'
+                            name: 'Front-End Web Application Development',
+                            reason: 'Important course on concentration track necessary to be able to develop projects individually.'
                         }, true);
                     }
                 }, 0);
             });
 
-            addCourseBtn.addEventListener('click', () => addCourse({}, true));
+            addCourseBtn.addEventListener('click', (e) => {
+                addCourse({}, true);
+            });
 
-            // If user deletes the initial course via delete button, handler must exist:
             document.querySelectorAll('.delete-course').forEach((btn) => {
                 btn.addEventListener('click', (e) => {
                     e.currentTarget.closest('.course-item').remove();
                 });
             });
 
-            // Validate required fields before building result
-            function validate(formData) {
-                const required = ['first','last','ack','ackDate','mascAdj','mascAnimal','divider','statement','b1','b2','b3','b4','b5','b6','b7','quote','quoteAuthor'];
+            function validate(fd) {
+                const required = ['first', 'last', 'ack', 'ackDate', 'mascAdj', 'mascAnimal', 'divider', 'statement', 'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'quote', 'quoteAuthor'];
                 for (const name of required) {
-                    const val = formData.get(name);
-                    if (!val || val.trim() === '') return name;
+                    const v = fd.get(name);
+                    if (!v || v.trim() === '') return name;
                 }
                 return null;
             }
 
-            // Build and display the "introduction" result
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const fd = new FormData(form);
@@ -285,7 +394,6 @@
                     return;
                 }
 
-                // Gather courses
                 const courseDivs = Array.from(coursesContainer.querySelectorAll('.course-item'));
                 const courses = courseDivs.map((div) => {
                     return {
@@ -296,83 +404,81 @@
                     };
                 });
 
-                // Gather links
                 const links = [];
-                for (let i=1;i<=5;i++) {
-                    const url = fd.get('link'+i);
+                for (let i = 1; i <= 5; i++) {
+                    const url = fd.get('link' + i);
                     if (url && url.trim()) links.push(url.trim());
                 }
 
-                // Picture: if file chosen, use current preview src, otherwise default src
                 const picSrc = picturePreview.src || 'images/me.jpg';
 
-                // Build html
-                const htmlParts = [];
-                htmlParts.push(`<article>`);
-                htmlParts.push(`<h1>${escapeHtml(fd.get('first') + ' ' + (fd.get('middle') ? fd.get('middle') + ' ' : '') + fd.get('last'))}</h1>`);
-                htmlParts.push(`<h2>Introduction</h2>`);
-                htmlParts.push(`<p class="muted">${escapeHtml(fd.get('ack'))} ${escapeHtml(fd.get('divider'))} ${escapeHtml(fd.get('ackDate'))}</p>`);
-                htmlParts.push(`<div style="display:flex;gap:1rem;align-items:flex-start">`);
-                htmlParts.push(`<div style="flex:1">`);
-                htmlParts.push(`<img src="${escapeHtml(picSrc)}" alt="Profile picture" class="preview-img">`);
-                htmlParts.push(`<p class="muted">${escapeHtml(fd.get('picCaption'))}</p>`);
-                htmlParts.push(`</div>`);
-                htmlParts.push(`<div style="flex:2">`);
-                htmlParts.push(`<p>${escapeHtml(fd.get('statement'))}</p>`);
-                htmlParts.push(`<h3>Main Points</h3>`);
-                htmlParts.push(`<ul>`);
-                for (let i=1;i<=7;i++) {
-                    htmlParts.push(`<li>${escapeHtml(fd.get('b'+i))}</li>`);
-                }
-                htmlParts.push(`</ul>`);
-                if (courses.length) {
-                    htmlParts.push(`<h3>Courses</h3>`);
-                    htmlParts.push(`<ul>`);
-                    courses.forEach((c) => {
-                        const deptNum = [c.dept, c.number].filter(Boolean).join(' ');
-                        htmlParts.push(`<li><strong>${escapeHtml(deptNum)}</strong>: ${escapeHtml(c.name)} <span class="muted">(${escapeHtml(c.reason)})</span></li>`);
-                    });
-                    htmlParts.push(`</ul>`);
-                }
-                htmlParts.push(`<blockquote>${escapeHtml(fd.get('quote'))} — <em>${escapeHtml(fd.get('quoteAuthor'))}</em></blockquote>`);
-                if (fd.get('funny')) htmlParts.push(`<p><strong>Funny thing:</strong> ${escapeHtml(fd.get('funny'))}</p>`);
-                if (fd.get('share')) htmlParts.push(`<p><strong>Something to share:</strong> ${escapeHtml(fd.get('share'))}</p>`);
-                if (links.length) {
-                    htmlParts.push(`<div class="links"><h4>Links</h4>`);
-                    links.forEach((l, idx) => {
-                        htmlParts.push(`<a href="${escapeHtml(l)}" target="_blank" rel="noopener noreferrer">Link ${idx+1}</a>`);
-                    });
-                    htmlParts.push(`</div>`);
-                }
-                htmlParts.push(`</div></div>`);
-                htmlParts.push(`</article>`);
+                const html = [];
+                html.push(`<article>`);
+                html.push(`<h1>${escapeHtml(fd.get('first') + ' ' + (fd.get('middle') ? fd.get('middle') + ' ' : '') + fd.get('last'))}</h1>`);
+                html.push(`<h2>Introduction</h2>`);
+                html.push(`<p class="muted">${escapeHtml(fd.get('ack'))} ${escapeHtml(fd.get('divider'))} ${escapeHtml(fd.get('ackDate'))}</p>`);
+                html.push(`<div style="display:flex;gap:1rem;align-items:flex-start">`);
 
-                // render the result and show it
-                result.innerHTML = htmlParts.join('');
-                // add a "start over" link
-                const startOverWrapper = document.createElement('p');
-                startOverWrapper.innerHTML = '<a id="startOver" href="#">Start over</a>';
-                result.appendChild(startOverWrapper);
+                html.push(`<div style="flex:1">`);
+                html.push(`<img src="${escapeHtml(picSrc)}" class="preview-img">`);
+                html.push(`<p class="muted">${escapeHtml(fd.get('picCaption'))}</p>`);
+                html.push(`</div>`);
+
+                html.push(`<div style="flex:2">`);
+                html.push(`<p>${escapeHtml(fd.get('statement'))}</p>`);
+                html.push(`<h3>Main Points</h3><ul>`);
+                for (let i = 1; i <= 7; i++) {
+                    html.push(`<li>${escapeHtml(fd.get('b' + i))}</li>`);
+                }
+                html.push(`</ul>`);
+
+                if (courses.length) {
+                    html.push(`<h3>Courses</h3><ul>`);
+                    courses.forEach((c) => {
+                        html.push(`<li><strong>${escapeHtml(c.dept + ' ' + c.number)}</strong>: ${escapeHtml(c.name)} <span class="muted">(${escapeHtml(c.reason)})</span></li>`);
+                    });
+                    html.push(`</ul>`);
+                }
+
+                html.push(`<blockquote>${escapeHtml(fd.get('quote'))} — <em>${escapeHtml(fd.get('quoteAuthor'))}</em></blockquote>`);
+
+                if (fd.get('funny')) {
+                    html.push(`<p><strong>Funny thing:</strong> ${escapeHtml(fd.get('funny'))}</p>`);
+                }
+
+                if (fd.get('share')) {
+                    html.push(`<p><strong>Something to share:</strong> ${escapeHtml(fd.get('share'))}</p>`);
+                }
+
+                if (links.length) {
+                    html.push(`<div class="links"><h4>Links</h4>`);
+                    links.forEach((l, i) => {
+                        html.push(`<a href="${escapeHtml(l)}" target="_blank">Link ${i + 1}</a>`);
+                    });
+                    html.push(`</div>`);
+                }
+
+                html.push(`</div></div></article>`);
+
+                result.innerHTML = html.join('');
+
+                const startOver = document.createElement('p');
+                startOver.innerHTML = '<a id="startOver" href="#">Start over</a>';
+                result.appendChild(startOver);
 
                 result.classList.remove('hidden');
                 form.classList.add('hidden');
 
-                // attach start over handler
                 document.getElementById('startOver').addEventListener('click', (ev) => {
                     ev.preventDefault();
-                    // show form again, keep current values
                     result.classList.add('hidden');
                     form.classList.remove('hidden');
-                    window.scrollTo({top:0,behavior:'smooth'});
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
-
-            // Ensure initial state: if courses container empty, populate with one item
-            if (!coursesContainer.querySelector('.course-item')) {
-                addCourse({dept:'ITIS', number:'3135', name:'Intro to Web Dev', reason:'To build accessible websites'});
-            }
-
         })();
     </script>
+
 </body>
+
 </html>
