@@ -1,22 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacob Bell - ITIS 3135 - Home</title>
-    <link rel="stylesheet" href="styles/default.css">
-    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
+    <title>Cylows Gaming Portfolio</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="scripts/loadComponents.js" defer></script>
 </head>
+
 <body>
-    <header>
-        <div data-include="components/header.html"></div>
-    </header>
-    <main>
-        <h2>ITIS 3135 Home</h2>
-        <p>This is all the content for my ITIS 3135 class.</p>
-    </main>
-    
-        <div data-include="components/footer.html"></div>
-    <script src="scripts/HTMLInclude.min.js"></script>
+
+    <div id="header"></div>
+
+    <div class="container">
+
+        <!-- HERO SECTION -->
+        <div class="hero">
+            <img src="images/maxpowerleaderboard.png" alt="Cylows Hero Banner">
+            <div class="hero-text">Elite Gaming Performance</div>
+        </div>
+
+        <!-- PORTRAIT SECTION -->
+        <div class="portrait-frame">
+            <img src="images/christian.jpg" alt="Cylows Portrait">
+        </div>
+
+        <h2 style="text-align:center; margin-top:10px;">Cylows</h2>
+
+        <!-- SHORT BLURB -->
+        <h2 class="section-title">About the Player</h2>
+        <p style="max-width:800px; margin-bottom:40px;">
+            Cylows is a top-ranked competitive FPS player recognized across Destiny 2, Valorant, and Aim Lab.
+            With multiple top-0.1% leaderboard placements and tournament-level aim metrics, he stands among
+            the most consistent high-performance players in the scene.
+        </p>
+
+        <!-- FEATURED CARDS -->
+        <h2 class="section-title">Featured Achievements</h2>
+
+        <div class="grid">
+
+            <div class="grid-item">
+                <img src="images/maxpowerleaderboard.png">
+                <h3>Max Power Rank #1</h3>
+                <p>Season 27 global leader in Destiny 2.</p>
+            </div>
+
+            <div class="grid-item">
+                <img src="images/gamemodewinrate.png">
+                <h3>Top 0.1% PvP</h3>
+                <p>Elite win rate and KD across competitive playlists.</p>
+            </div>
+
+            <div class="grid-item">
+                <img src="images/valorantcombineranking.png">
+                <h3>Valorant Combine</h3>
+                <p>Placed Top 20 in Combine 2 event.</p>
+            </div>
+
+        </div>
+
+        <a href="gallery.html" class="button">View Full Gallery</a>
+        <a href="contact.html" class="button">Apply to Duo</a>
+
+    </div>
+
+    <div id="footer"></div>
+
 </body>
+
 </html>
