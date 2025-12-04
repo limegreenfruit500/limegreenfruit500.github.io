@@ -716,7 +716,54 @@
     </div>
     `;
 
+        const post14 = document.createElement('article');
+        post14.id = 'post14';
+        post14.innerHTML = `
+        <div class="post-header" style="align-items: flex-start;">
+            <img src="IMG_2268.jpg" alt="Jacob's Photo" style="width:40px;height:40px;border-radius:50%;object-fit:cover;margin-right:12px;border:1px solid #dbdbdb;">
+            <div style="display: flex; flex-direction: column;">
+                <div class="post-title" style="margin-bottom: 6px;">You Don’t Need More Discipline — You Need Better Boundaries</div>
+                <div class="date" style="align-self: flex-end; margin-top: 8px;">December 3, 2025</div>
+            </div>
+        </div>
+        <div class="post-media">
+            <img src="post14.png" alt="Boundaries Not Discipline">
+        </div>
+        <details open>
+            <summary>Why boundaries matter more than “grinding harder”</summary>
+            <div>
+                Most college students think their problem is discipline.<br>
+                But the real issue is boundaries.<br><br>
+                You don’t need to push harder — you need to stop saying yes to things that drain you.<br><br>
+                Healthy semesters aren’t built on guilt, overwork, or trying to be everywhere at once.<br>
+                They’re built on structure, rest, and choosing a workload that actually fits the human being you are.
+            </div>
+        </details>
+        <details>
+            <summary>Research-backed reasons to set boundaries</summary>
+            <div>
+                - Burnout comes from chronic pressure and lack of coping systems, not laziness.<br>
+                - Students with better self-regulation and time boundaries report lower burnout.<br>
+                - Overcommitment and lack of rest lead to higher stress and lower well-being.<br>
+                - Resilience is about values, limits, and intentional choices—not just toughness.
+            </div>
+        </details>
+        <div class="like-bar">
+            <button id="like-btn-14">&#9829;</button>
+            <span id="like-count-14">0 likes</span>
+        </div>
+    `;
 
+        document.querySelector('.container').appendChild(post14);
+
+        // Like button functionality (fourteenth post)
+        let likeCount14 = parseInt(localStorage.getItem('likeCount14') || '0');
+        document.getElementById('like-count-14').textContent = likeCount14 + (likeCount14 === 1 ? ' like' : ' likes');
+        document.getElementById('like-btn-14').addEventListener('click', function () {
+            likeCount14++;
+            localStorage.setItem('likeCount14', likeCount14);
+            document.getElementById('like-count-14').textContent = likeCount14 + (likeCount14 === 1 ? ' like' : ' likes');
+        });
 
         document.querySelector('.container').appendChild(post13);
 
