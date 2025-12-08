@@ -1,14 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("duoForm");
-    const msg = document.getElementById("responseMessage");
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-        msg.textContent = "Application submitted! Cylows will review.";
-        msg.style.color = "#00ffaa";
-        msg.style.display = "block";
+            const data = new FormData(form);
 
-        form.reset();
-    });
+            const msg = `
+New Duo Application:
+Name: ${data.get("name")}
+Gamertag: ${data.get("gamertag")}
+Experience: ${data.get("experience")}
+Why Duo?: ${data.get("reason")}
+`;
+
+            window.location.href =
+                "mailto:limetimeow@gmail.com?subject=Duo Application&body=" +
+                encodeURIComponent(msg);
+        });
+    }
 });
