@@ -3,56 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Gallery Slideshow</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="scripts/loadComponents.js" defer></script>
     <script src="scripts/slideshow.js" defer></script>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <div id="header"></div>
 
-    <div class="container">
+    <main class="main-content">
+        <h1 class="section-title">Gallery</h1>
+        <div class="section-divider"></div>
 
-        <h1 class="section-title">Achievement Gallery</h1>
+        <div class="gallery-wrapper">
+            <img id="gallery-slide" src="images/maxpowerleaderboard.png" alt="Gallery Image">
 
-        <div class="slideshow-container">
-
-            <div class="slide">
-                <img src="images/maxpowerleaderboard.png">
+            <div class="gallery-arrows">
+                <button class="gallery-arrow-btn" onclick="prevSlide()">← Previous</button>
+                <button class="gallery-arrow-btn" onclick="nextSlide()">Next →</button>
             </div>
 
-            <div class="slide">
-                <img src="images/gamemodewinrate.png">
+            <div class="button-row">
+                <a class="primary-btn" href="index.html">Back to Home</a>
             </div>
-
-            <div class="slide">
-                <img src="images/zonecontrol.png">
-            </div>
-
-            <div class="slide">
-                <img src="images/valorantcombineranking.png">
-            </div>
-
-            <div class="slide">
-                <img src="images/rumble.png">
-            </div>
-
-            <div class="slide">
-                <img src="images/elo.jpg">
-            </div>
-
-            <a class="slide-btn prev" onclick="plusSlides(-1)">❮</a>
-            <a class="slide-btn next" onclick="plusSlides(1)">❯</a>
-
         </div>
-
-    </div>
+    </main>
 
     <div id="footer"></div>
-
 </body>
 
 </html>
