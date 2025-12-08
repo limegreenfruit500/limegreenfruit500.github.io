@@ -1,20 +1,26 @@
-let slideIndex = 1;
+let slides = [
+    "images/maxpowerleaderboard.png",
+    "images/elo.jpg",
+    "images/gamemodewinrate.png",
+    "images/valorantcombineranking.png",
+    "images/zonecontrol.png",
+    "images/rumble.png"
+];
 
-document.addEventListener("DOMContentLoaded", () => {
-    showSlides(slideIndex);
-});
+let current = 0;
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
+function showSlide() {
+    document.getElementById("gallery-slide").src = slides[current];
 }
 
-function showSlides(n) {
-    let slides = document.getElementsByClassName("slide");
-
-    if (n > slides.length) slideIndex = 1;
-    if (n < 1) slideIndex = slides.length;
-
-    for (let s of slides) s.style.display = "none";
-
-    slides[slideIndex - 1].style.display = "block";
+function nextSlide() {
+    current = (current + 1) % slides.length;
+    showSlide();
 }
+
+function prevSlide() {
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide();
+}
+
+document.addEventListener("DOMContentLoaded", showSlide);
