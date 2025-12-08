@@ -3,74 +3,68 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cylows Gaming Portfolio</title>
-
     <link rel="stylesheet" href="css/styles.css">
     <script src="scripts/loadComponents.js" defer></script>
+    <script src="https://lint.page/kit/4d0fe3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <div id="header"></div>
 
-    <div class="container">
+    <main class="main-content">
+        <h1 class="section-title">Elite Gaming Performance</h1>
+        <div class="section-divider"></div>
 
-        <div class="hero">
-            <img src="images/maxpowerleaderboard.png">
-            <div class="hero-text">Elite Gaming Performance</div>
+        <div class="side-by-side-section">
+            <div class="side-item">
+                <img src="images/maxpowerleaderboard.png" class="large-rounded-img" alt="Max Power Leaderboard">
+            </div>
+
+            <div class="side-item">
+                <div class="portrait-frame">
+                    <img src="images/christian.jpg" alt="Portrait of Cylows">
+                </div>
+                <h2>Christian “Cylows” Feetling</h2>
+                <p>
+                    A precision FPS competitor known for elite aim consistency, strong leadership,
+                    and top-ranked performance across multiple titles.
+                </p>
+            </div>
         </div>
 
-        <div class="portrait-frame">
-            <img src="images/christian.jpg">
-        </div>
-
-        <h2 style="text-align:center; margin-top:10px;">Cylows</h2>
-
-        <div class="section-bar"></div>
-
-        <h2 class="section-title">About the Player</h2>
-
-        <p style="max-width:800px;">
-            Cylows is a top-ranked competitive FPS player recognized across Destiny 2, Valorant,
-            and Aim Lab. With multiple top-0.1% leaderboard placements and tournament-level aim
-            metrics, he stands among the most consistent high-performance players in the scene.
-        </p>
-
-        <div class="section-bar"></div>
+        <div class="section-divider"></div>
 
         <h2 class="section-title">Featured Achievements</h2>
 
-        <div class="grid">
-
-            <div class="grid-item">
-                <img src="images/maxpowerleaderboard.png">
-                <h3>Max Power Rank #1</h3>
-                <p>Season 27 global leader in Destiny 2.</p>
+        <div class="achievement-grid">
+            <div class="achievement-card">
+                <img src="images/maxpowerleaderboard.png" alt="Max Power Rank">
+                <p><strong>Max Power Rank #1</strong></p>
+                <p>Top global leaderboard placement.</p>
             </div>
 
-            <div class="grid-item">
-                <img src="images/gamemodewinrate.png">
-                <h3>Top 0.1% PvP</h3>
-                <p>Elite win rate and KD across competitive playlists.</p>
+            <div class="achievement-card">
+                <img src="images/elo.jpg" alt="PvP Stats">
+                <p><strong>Top 0.1% PvP</strong></p>
+                <p>Elite accuracy and competitive standing.</p>
             </div>
 
-            <div class="grid-item">
-                <img src="images/valorantcombineranking.png">
-                <h3>Valorant Combine</h3>
-                <p>Placed Top 20 in Combine 2 Event.</p>
+            <div class="achievement-card">
+                <img src="images/valorantcombineranking.png" alt="Valorant Combine">
+                <p><strong>Valorant Combine</strong></p>
+                <p>Placed Top 20 in official Combine event.</p>
             </div>
-
         </div>
 
         <div class="button-row">
-            <a href="gallery.html" class="button">View Full Gallery</a>
-            <a href="duo_apply.html" class="button">Apply to Duo</a>
+            <a class="primary-btn" href="gallery.html">Open Gallery</a>
+            <a class="primary-btn" href="duo_apply.html">Apply to Duo</a>
         </div>
-
-    </div>
+    </main>
 
     <div id="footer"></div>
-
 </body>
 
 </html>
