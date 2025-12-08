@@ -1,9 +1,13 @@
-// Load header
-fetch("components/header.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("header").innerHTML = data);
+function loadComponent(id, file) {
+    fetch(file)
+        .then((res) => res.text())
+        .then((html) => {
+            document.getElementById(id).innerHTML = html;
+        })
+        .catch((err) => console.error("Component load error:", err));
+}
 
-// Load footer
-fetch("components/footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
+document.addEventListener("DOMContentLoaded", () => {
+    loadComponent("header", "components/header.html");
+    loadComponent("footer", "components/footer.html");
+});
